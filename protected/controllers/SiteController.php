@@ -92,7 +92,7 @@ class SiteController extends Controller
 						$allmonth[] = array('month' => $sale->date_sale, 'prod' => $sale->prod, 'payout' => $sale->payout);
 					}
 
-				$datesresume[] = array('month' => Yii::app()->dateFormatter->format("MM/yy", $sale->date_sale), 'allmonth' => $allmonth);
+				$datesresume[] = array('month' => Yii::app()->dateFormatter->format("MM/yy", $sale->date_sale), 'prod' => $sale->prod, 'payout' => $sale->payout, 'allmonth' => $allmonth);
 			 }
 
 			$MTD = 0;

@@ -87,9 +87,9 @@ $this->pageTitle=Yii::app()->name;
 					</div>
 				</div>
 
-				<?php var_dump($user['datesresume']); ?>
+				
 				<!-- ============================================================== -->
-				<?php foreach ($user['details'] as $month): ?>
+				<?php foreach ($user['datesresume'] as $month): ?>
 				<div class="row detail">
 					<div class="col-xs-2 col-xs-offset-2">
 						<p><?php echo $month['month'] ?></p>
@@ -98,14 +98,14 @@ $this->pageTitle=Yii::app()->name;
 						<p><?php echo $month['prod'] ?></p>
 					</div>
 					<div class="col-xs-2">
-						<p><?php echo $month['pay'] ?></p>
+						<p><?php echo $month['payout'] ?></p>
 					</div>
 				</div>
 
-				<!-- THIERD TABLE DETAIL MONTH DETAIL ========================================
+				<!-- THIRD TABLE DETAIL MONTH DETAIL ========================================
 				================================================================> -->
-
-					<div class="row level1 hidden">
+				<div class="container">
+					<div class="row hidden">
 						<div class="col-xs-2 col-xs-offset-2">
 							<h4>Date</h4>
 						</div>
@@ -116,10 +116,40 @@ $this->pageTitle=Yii::app()->name;
 							<h4>Payout</h4>
 						</div>
 					</div>
+
+
+					<?php foreach ($month['allmonth'] as $detail): ?>
+
+					<div class="row hidden">
+						<div class="col-xs-2 col-xs-offset-2">
+							<p><?php echo $detail['month'] ?></p>
+						</div>
+						<div class="col-xs-2">
+							<p><?php echo $detail['prod'] ?></p>
+						</div>
+						<div class="col-xs-2">
+							<p><?php echo $detail['payout'] ?></p>
+						</div>
+					</div>
+					<div class="row hidden">
+						<div class="col-xs-2 col-xs-offset-2">
+							<p>--------></p>
+						</div>
+						<div class="col-xs-2">
+							<p><?php echo $month['prod'] ?></p>
+						</div>
+						<div class="col-xs-2">
+							<p><?php echo $month['payout'] ?></p>
+						</div>
+					</div>
 						
 					<br>
 
+					<?php endforeach ?>
+				</div>
+				
 				<?php endforeach ?>
+				<hr>
 
 		<?php endforeach ?>
 	</div>
