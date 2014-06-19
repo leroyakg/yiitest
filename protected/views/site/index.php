@@ -75,7 +75,7 @@ $this->pageTitle=Yii::app()->name;
 				<!-- SECOND ROW MONTH DETAIL ========================================
 				================================================================> -->
 
-				<div class="row detail">
+				<div class="row detail hidden">
 					<div class="col-xs-2 col-xs-offset-2">
 						<h4>Month</h4>
 					</div>
@@ -90,7 +90,7 @@ $this->pageTitle=Yii::app()->name;
 				
 				<!-- ============================================================== -->
 				<?php foreach ($user['datesresume'] as $month): ?>
-				<div class="row detail">
+				<div class="row detail hidden">
 					<div class="col-xs-2 col-xs-offset-2">
 						<p><?php echo $month['month'] ?></p>
 					</div>
@@ -174,14 +174,6 @@ $(function() {
 	var toggle2;
 	$(".table-head h4").click(function(){
 		
-		var c = $(this).attr('class');
-		console.log(c)
-		$('.sort').jSort({
-			sort_by: '.'+c,
-			item: '.sort-items',
-			order: toggle2 ? 'asc' : 'desc'
-		});
-		toggle2 = !toggle2;
 	});
 });
 </script>
