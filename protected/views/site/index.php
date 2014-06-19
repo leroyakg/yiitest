@@ -171,7 +171,6 @@ $(function() {
 	///////////
 	// Sort //
 	///////////
-
 	var toggleSort;
 	$(".table-head h4").click(function() {
 		var sortBy = $(this).text().toLowerCase();
@@ -180,6 +179,7 @@ $(function() {
 		else sortFunc = (toggleSort ? sortIntAsc : sortIntDesc);
 
 		var sorted = $('.sort-items .'+sortBy)
+			// get the values from the DOM
 			.map(function(i, val){return val.innerHTML})
 			.sort(sortFunc)
 			.get();
