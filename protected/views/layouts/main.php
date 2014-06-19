@@ -40,11 +40,11 @@
 
 <div class="clear"></div>
 
-<div id="footer" class="text-center well">
+<!-- <div id="footer" class="text-center well">
 	Copyright &copy; <?php echo date('Y'); ?> by leroykilgore.<br/>
 	All Rights Reserved.<br/>
 	<?php echo Yii::powered(); ?>
-</div><!-- footer -->
+</div> footer -->
 
 
 

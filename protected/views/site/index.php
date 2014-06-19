@@ -135,24 +135,56 @@ $this->pageTitle=Yii::app()->name;
 					<?php endforeach ?>
 
 				<?php endforeach ?>
-				<hr>
 
-				<div class="row">
+				<div class="row hidden">
 
 					<div class="row">
 						<div class="col-xs-2 col-xs-offset-2">
-							<strong>Total:</strong>
+							<h4>Total:</h4>
 						</div>
 						<div class="col-xs-2">
-							<strong><?php echo $user['YTD']; ?></strong>
+							<h4><?php echo $user['YTD']; ?></h4>
 						</div>
 						<div class="col-xs-2">
-							<strong><?php echo $user['YTD2']; ?></strong>
+							<h4><?php echo $user['YTD2']; ?></h4>
 						</div>
 					</div>
+<<<<<<< HEAD
+					
+=======
+>>>>>>> aab3bdc06a4040eaaf8fbbf768cbe2d47d1166db
 			</div>
 
 		<?php endforeach ?>
+
+		<div class="row sort-items">
+				<div class="col-xs-2">
+					<h4>Total</h4>
+				</div>
+
+				<div class="col-xs-1">
+					<h4><?php echo $user['totalprod']; ?></h4>
+				</div>
+
+				<div class="col-xs-1">
+					
+				</div>
+
+				<div class="col-xs-1">
+					
+				</div>
+
+				<div class="col-xs-1">
+					
+				</div>
+
+				<div class="col-xs-offset-4 col-xs-2">
+					<h4><?php echo $user['totalpay']; ?></h4>
+				</div>
+
+
+			</div>
+
 	</div>
 
 </div>

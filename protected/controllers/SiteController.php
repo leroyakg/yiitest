@@ -54,8 +54,11 @@ class SiteController extends Controller
 
 		$criteria=new CDbCriteria();
 	    $users=User::model()->findAll($criteria);
+     	$totalprod = 0;
+		$totalpay = 0;
 
 	     foreach ($users as $user) {
+
 			$YTD = 0;
 			$YTD2 = 0;
 			$details = array();
@@ -69,6 +72,9 @@ class SiteController extends Controller
 				//var_dump($sale->prod);
 				$YTD = $YTD + $sale->prod;
 				$YTD2 = $YTD2 + $sale->payout;
+
+				$totalprod = $totalprod + $sale->prod;
+				$totalpay = $totalpay + $sale->payout;
 
 				$details[] = array('id' => $sale->seqNo, 'month' => $sale->date_sale, 'prod' => $sale->prod, 'pay' => $sale->payout);
 			 }
@@ -91,6 +97,7 @@ class SiteController extends Controller
 					foreach ($sales as $sale) {
 						$allmonth[] = array('month' => $sale->date_sale, 'prod' => $sale->prod, 'payout' => $sale->payout);
 					}
+				
 
 				$datesresume[] = array('month' => Yii::app()->dateFormatter->format("MM/yy", $sale->date_sale), 'prod' => $sale->prod, 'payout' => $sale->payout, 'allmonth' => $allmonth);
 			 }
@@ -128,7 +135,7 @@ class SiteController extends Controller
 			 }
 
 
-			$data[]=array('name'=>$user->name, 'YTD' => $YTD, 'YTD2' => $YTD2, 'MTD' => $MTD, 'MTD2' => $MTD2, 'YYTD' => $YYTD, 'YYTD2' => $YYTD2, 'details' => $details, 'monthresume' => $monthresume, 'datesresume' => $datesresume);
+			$data[]=array('name'=>$user->name, 'YTD' => $YTD, 'YTD2' => $YTD2, 'MTD' => $MTD, 'MTD2' => $MTD2, 'YYTD' => $YYTD, 'YYTD2' => $YYTD2, 'details' => $details, 'monthresume' => $monthresume, 'datesresume' => $datesresume, 'totalpay' => $totalpay, 'totalprod' => $totalprod);
 	     }
 
 	    $criteria=new CDbCriteria();
