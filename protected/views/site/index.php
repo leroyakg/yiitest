@@ -131,25 +131,32 @@ $this->pageTitle=Yii::app()->name;
 							<p><?php echo $detail['payout'] ?></p>
 						</div>
 					</div>
-					<div class="row hidden">
-						<div class="col-xs-2 col-xs-offset-2">
-							<p>--------></p>
-						</div>
-						<div class="col-xs-2">
-							<p><?php echo $month['prod'] ?></p>
-						</div>
-						<div class="col-xs-2">
-							<p><?php echo $month['payout'] ?></p>
-						</div>
-					</div>
 						
 					<br>
 
 					<?php endforeach ?>
 				</div>
-				
+
 				<?php endforeach ?>
 				<hr>
+
+				<div class="row">
+
+					<div class="row">
+						<div class="col-xs-2 col-xs-offset-2">
+							<strong>Total:</strong>
+						</div>
+						<div class="col-xs-2">
+							<strong><?php echo $user['YTD']; ?></strong>
+						</div>
+						<div class="col-xs-2">
+							<strong><?php echo $user['YTD2']; ?></strong>
+						</div>
+					</div>
+					<br>
+					<br>
+					<br>
+			</div>
 
 		<?php endforeach ?>
 	</div>
