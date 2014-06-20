@@ -53,7 +53,7 @@ $this->pageTitle=Yii::app()->name;
 					</div>
 				
 					<div class="col-xs-1">
-						<p class='ytd'><?php echo $user['YTD']; ?></p>
+						<p class='ytd bg-warning'><?php echo $user['YTD']; ?></p>
 					</div>
 				
 					<div class="col-xs-1">
@@ -93,7 +93,7 @@ $this->pageTitle=Yii::app()->name;
 						<div class="col-xs-2 col-xs-offset-2">
 							<p><?php echo $month['month'] ?></p>
 						</div>
-						<div class="col-xs-2 detail-prod">
+						<div class="col-xs-2 detail-prod bg-warning">
 							<p><?php echo $month['prod'] ?></p>
 						</div>
 						<div class="col-xs-2">
@@ -121,7 +121,7 @@ $this->pageTitle=Yii::app()->name;
 								<p><?php echo $detail['month'] ?></p>
 							</div>
 							<div class="col-xs-2">
-								<p><?php echo $detail['prod'] ?></p>
+								<p class="bg-warning"><?php echo $detail['prod'] ?></p>
 							</div>
 							<div class="col-xs-2">
 								<p><?php echo $detail['payout'] ?></p>
