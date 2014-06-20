@@ -56,6 +56,10 @@ class SiteController extends Controller
 	    $users=User::model()->findAll($criteria);
      	$totalprod = 0;
 		$totalpay = 0;
+		$totalmprod = 0;
+		$totalmpay = 0;
+		$totalyprod = 0;
+		$totalypay = 0;
 
 	     foreach ($users as $user) {
 
@@ -97,7 +101,7 @@ class SiteController extends Controller
 					foreach ($sales as $sale) {
 						$allmonth[] = array('month' => $sale->date_sale, 'prod' => $sale->prod, 'payout' => $sale->payout);
 					}
-				
+
 
 				$datesresume[] = array('month' => Yii::app()->dateFormatter->format("MM/yy", $sale->date_sale), 'prod' => $sale->prod, 'payout' => $sale->payout, 'allmonth' => $allmonth);
 			 }
@@ -116,6 +120,9 @@ class SiteController extends Controller
 				$MTD = $MTD + $sale->prod;
 				$MTD2 = $MTD2 + $sale->payout;
 
+				$totalmprod = $totalmprod + $sale->prod;
+				$totalmpay = $totalmpay + $sale->payout;
+
 				$monthresume[] = array('month' => Yii::app()->dateFormatter->format("MM/yy", $sale->date_sale), 'prod' => $sale->prod, 'pay' => $sale->payout);
 
 			 }
@@ -132,11 +139,15 @@ class SiteController extends Controller
 				//var_dump($sale->prod);
 				$YYTD = $YTD + $sale->prod;
 				$YYTD2 = $YTD2 + $sale->payout;
+
+				$totalyprod = $totalyprod + $sale->prod;
+				$totalypay = $totalypay + $sale->payout;
 			 }
 
 
-			$data[]=array('name'=>$user->name, 'YTD' => $YTD, 'YTD2' => $YTD2, 'MTD' => $MTD, 'MTD2' => $MTD2, 'YYTD' => $YYTD, 'YYTD2' => $YYTD2, 'details' => $details, 'monthresume' => $monthresume, 'datesresume' => $datesresume, 'totalpay' => $totalpay, 'totalprod' => $totalprod);
-	     }
+			$data[]=array('name'=>$user->name, 'YTD' => $YTD, 'YTD2' => $YTD2, 'MTD' => $MTD, 'MTD2' => $MTD2, 'YYTD' => $YYTD, 'YYTD2' => $YYTD2, 'details' => $details, 'monthresume' => $monthresume, 'datesresume' => $datesresume, 'totalpay' => $totalpay, 'totalprod' => $totalprod, 'totalmpay' => $totalmpay,
+				'totalmprod' => $totalmprod, 'totalmpay' => $totalmpay,'totalyprod' => $totalyprod);
+	     	}
 
 	    $criteria=new CDbCriteria();
 	    $client=Client::model()->findAll($criteria);

@@ -7,6 +7,7 @@
 
 	<!-- blueprint CSS framework -->
 	<link rel="stylesheet" type="text/css" href="<?php echo Yii::app()->request->baseUrl; ?>/css/bootstrap.min.css" />
+  <link rel="stylesheet" type="text/css" href="<?php echo Yii::app()->request->baseUrl; ?>/css/style.css" />
 	
 	<title><?php echo CHtml::encode($this->pageTitle); ?></title>
 </head>
@@ -47,6 +48,6 @@
 </div> footer -->
 
 
-
+<script src="<?php echo Yii::app()->request->baseUrl; ?>/js/bootstrap.min.js" type="text/javascript" charset="utf-8" async defer></script>
 </body>
 </html>
