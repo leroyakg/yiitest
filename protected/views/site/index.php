@@ -44,38 +44,40 @@ $this->pageTitle=Yii::app()->name;
 
 	</div>
 	<!-- Main Detail Information -->
-	<div>
+	<div class="sort">
+		<?php $count = 0; ?>
 		<?php foreach($data as $user): ?>
-			<div class="main">
-				<div class="row sort">
-					<div class="col-xs-2">
-						<p class='name'><?php echo $user['name']; ?></p>
-					</div>
-				
-					<div class="col-xs-1">
-						<p class='ytd'><?php echo $user['YTD']; ?></p>
-					</div>
-				
-					<div class="col-xs-1">
-						<p class='mtd'><?php echo $user['MTD']; ?></p>
-					</div>
-				
-					<div class="col-xs-1">
-						<p class='yesturday'><?php echo $user['YYTD']; ?></p>
-					</div>
-				
-					<div class="col-xs-offset-3 col-xs-2">
-						<p class='ytd2'><?php echo $user['YTD2']; ?></p>
-					</div>
-				
-					<div class="col-xs-2">
-						<p class='mtd2'><?php echo $user['MTD2']; ?></p>	
-					</div>
+			<?php $count = $count + 1; ?>
+			<div class="row sort-items">
+				<div class="col-xs-2">
+					<p class='name'><?php echo $user['name']; ?></p>
+				</div>
+
+				<div class="col-xs-1">
+					<?php echo '<p class="bg-warning" data-placement="top" data-tooltip="tooltip" title="Click for more info" data-toggle="collapse" data-target="#detail-header'.$count.', #detail-list'.$count.', #detail-total'.$count.'">'.$user['YTD']; ?></p>
+				</div>
+
+				<div class="col-xs-1">
+					<p class='mtd'><?php echo $user['MTD']; ?></p>
+				</div>
+
+				<div class="col-xs-1">
+					<p class='yesturday'><?php echo $user['YYTD']; ?></p>
+				</div>
+
+				<div class="col-xs-offset-3 col-xs-2">
+					<p class='ytd2'><?php echo $user['YTD2']; ?></p>
+				</div>
+
+				<div class="col-xs-2">
+					<p class='mtd2'><?php echo $user['MTD2']; ?></p>	
 				</div>
 				
 				<!-- SECOND ROW MONTH DETAIL ========================================
 				================================================================> -->
-				<div class="row detail">
+				<!-- <div class="row detail"> -->
+
+				<?php echo '<div class="row collapse detail-header" id="detail-header'.$count.'">' ?>
 					<div class="col-xs-2 col-xs-offset-2">
 						<h4>Month</h4>
 					</div>
@@ -86,53 +88,68 @@ $this->pageTitle=Yii::app()->name;
 						<h4>Payout</h4>
 					</div>
 				</div>
-				<!-- ============================================================== -->
 				
-				<?php foreach ($user['datesresume'] as $month): ?>
+				<?php echo '<div class="collapse detail-list" id="detail-list'.$count.'">' ?>
+				<!-- ============================================================== -->
+					<?php $count2 = 0; ?>
+					<?php foreach ($user['datesresume'] as $month): ?>
+					<?php $count2 = $count2 + 1; ?>
 					<div class="row detail">
 						<div class="col-xs-2 col-xs-offset-2">
 							<p><?php echo $month['month'] ?></p>
 						</div>
 						<div class="col-xs-2">
-							<p><?php echo $month['prod'] ?></p>
+							<?php echo '<p class="bg-warning" data-toggle="collapse" data-target="#detail2-header'.$count2.',#detail2-list'.$count2.'">'.$month['prod'] ?> </p>  
 						</div>
 						<div class="col-xs-2">
 							<p><?php echo $month['payout'] ?></p>
 						</div>
 					</div>
-				
+
 					<!-- THIRD TABLE DETAIL MONTH DETAIL ========================================
 					================================================================> -->
-					<div class="row hidden">
-						<div class="col-xs-2 col-xs-offset-2">
-							<h4>Date</h4>
-						</div>
-						<div class="col-xs-2">
-							<h4>Production</h4>
-						</div>
-						<div class="col-xs-2">
-							<h4>Payout</h4>
-						</div>
-					</div>
-				
-					<?php foreach ($month['allmonth'] as $detail): ?>
-						<div class="row hidden">
+						<?php echo '<div class="row collapse detail2-header" id="detail2-header'.$count2.'">' ?>
 							<div class="col-xs-2 col-xs-offset-2">
-								<p><?php echo $detail['month'] ?></p>
+								<h4>Date</h4>
 							</div>
 							<div class="col-xs-2">
-								<p><?php echo $detail['prod'] ?></p>
+								<h4>Production</h4>
 							</div>
 							<div class="col-xs-2">
-								<p><?php echo $detail['payout'] ?></p>
+								<h4>Payout</h4>
 							</div>
 						</div>
+
+						<?php echo '<div class="collapse detail2-list" id="detail2-list'.$count2.'">' ?>
+						<?php foreach ($month['allmonth'] as $detail): ?>
+							<div class="row">
+								<div class="col-xs-2 col-xs-offset-2">
+									<p><?php echo $detail['month'] ?></p>
+								</div>
+								<div class="col-xs-2">
+									<p><?php echo $detail['prod'] ?></p>
+								</div>
+								<div class="col-xs-2">
+									<p><?php echo $detail['payout'] ?></p>
+								</div>
+							</div>
+							
+						<?php endforeach ?>
+						<div class="row detail2-total">
+								<div class="col-xs-2 col-xs-offset-2">
+									<h5>Total</h5>
+								</div>
+								<div class="col-xs-2">
+									<h5>20</h5>
+								</div>
+								<div class="col-xs-2">
+									<h5>30</h5>
+								</div>
+							</div>
+					</div>
 					<?php endforeach ?>
-				
-				<?php endforeach ?>
-					
-				<!-- Total -->
-				<div class="row total">
+				</div>
+				<?php echo '<div class="row collapse" id="detail-total'.$count.'">' ?>
 					<div class="row">
 						<div class="col-xs-2 col-xs-offset-2">
 							<h4>Total:</h4>
@@ -144,28 +161,35 @@ $this->pageTitle=Yii::app()->name;
 							<h4><?php echo $user['YTD2']; ?></h4>
 						</div>
 					</div>
-				</div>
+				<!-- </div> -->
 			</div>
 
 		<?php endforeach ?>
 
 		<div class="row sort-items">
-			<div class="col-xs-2">
-				<h4>Total</h4>
-			</div>
+				<div class="col-xs-2">
+					<h4>Total</h4>
+				</div>
 
-			<div class="col-xs-1">
-				<h4><?php echo $user['totalprod']; ?></h4>
-			</div>
+				<div class="col-xs-1">
+					<h4><?php echo $user['totalprod']; ?></h4>
+				</div>
 
-			<div class="col-xs-1">
-				
-			</div>
+				<div class="col-xs-1">
+					<h4><?php echo $user['totalmprod']; ?></h4>
+				</div>
 
-			<div class="col-xs-1">
-				
-			</div>
+				<div class="col-xs-1">
+					<h4><?php echo $user['totalyprod']; ?></h4>
+				</div>
 
+				<div class="col-xs-offset-3 col-xs-2">
+					<h4><?php echo $user['totalpay']; ?></h4>
+				</div>
+
+				<div class="col-xs-2">
+					<h4><?php echo $user['totalmpay']; ?></h4>
+				</div>
 			<div class="col-xs-1">
 				
 			</div>
@@ -183,11 +207,33 @@ $this->pageTitle=Yii::app()->name;
 <script src='js/sort.js'></script>
 <script type="text/javascript" charset="utf-8">
 $(function() {
-	$('.detail, .total').hide();
-	$(".sort p.ytd").click(function() {
-		$(this).parent('.main')
-			.find('.detail, .total')
-			.slideToggle(300);
-	});
+	// jQuery('.mdk_toggable_list').each(function() {
+ //        var divFirst = jQuery(this).find('div:first');
+ //        divFirstHtml = divFirst.html();
+ //        if (jQuery(this).hasClass('mdk_toggable_initial_show')) {
+ //            divFirst.html('<div class=""><div style="float:left"><a href="#" onClick="mdk_togglable_link(jQuery(this),event);" class="mdk_toggable_showing mdk_toggable_link"><img src="/img/layout_default/ico_toggle_show.png" style="width:15px;margin-right:0.5em" /></a></div><div>' + divFirstHtml + '</div></div>');
+ //        } else {
+ //            divFirst.html('<div class="row"><div style="float:left"><a href="#" onClick="mdk_togglable_link(jQuery(this),event);" class="mdk_toggable_hidden mdk_toggable_link"><img src="/img/layout_default/ico_toggle_hidden.png" style="width:15px;margin-right:0.5em" /></a></div><div>' + divFirstHtml + '</div></div>');
+ //        }
+ //    });
+
+	function togglable_link(object, e) {
+	    e.preventDefault();
+	    if (object.hasClass('toggable_hidden')) {
+	        
+	        object.removeClass('mdk_toggable_hidden');
+	        object.addClass('toggable_showing');
+	        var parent = object.closest('.mdk_toggable_list');
+	        parent.find('.mdk_toggable_list_details:first').show(function() {
+	            jQuery.event.trigger('mdk_toggable_open', [object]);
+	        });
+	    } else {
+	        jQuery(object).find('img:first').attr('src', '/img/layout_default/ico_toggle_hidden.png');
+	        object.removeClass('mdk_toggable_showing');
+	        object.addClass('mdk_toggable_hidden');
+	        var parent = object.closest('.mdk_toggable_list');
+	        parent.find('.mdk_toggable_list_details:first').hide();
+	    }
+	}
 });
 </script>
