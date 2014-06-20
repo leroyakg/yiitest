@@ -194,8 +194,9 @@ $(function() {
 	});
 	$('.second-row .detail-prod').click(function() {
 		$(this).parent()
-			.parent()
-			.find('.third-row')
+			.next()
+			.slideToggle(300)
+			.next()
 			.slideToggle(300);
 	})
 });
