@@ -5,7 +5,14 @@ $this->pageTitle=Yii::app()->name;
 ?> */
 ?>
 <style type="text/css">
-	.bg-warning, .table-head h4{cursor: pointer;}
+	.bg-warning, .table-head h4{
+		cursor: pointer;
+		-webkit-user-select: none;
+	 	-moz-user-select: none;
+	 	-ms-user-select: none;
+	 	-o-user-select: none;
+	 	user-select: none;
+	}
 </style>
 <div class="container">
 	<!-- Top Header Tags -->
@@ -184,23 +191,6 @@ $this->pageTitle=Yii::app()->name;
 
 </div> <!-- container -->
 
-<script src="http://code.jquery.com/jquery-1.11.0.min.js"></script>
-<script src='js/sort.js'></script>
-<script type="text/javascript" charset="utf-8">
-$(function() {
-	$('.second-row, .third-row').hide();
-	// toggle animation when clicking YTD values.
-	$(".sort p.ytd").click(function() {
-		$(this).parent()
-			.parent()
-			.parent()
-			.find('.second-row')
-			.slideToggle(300);
-	});
-	$('.second-row .detail-prod').click(function() {
-		$(this).parent()
-			.next()
-			.slideToggle(300);
-	})
-});
-</script>
+<script type="text/javascript" src="http://code.jquery.com/jquery-1.11.0.min.js"></script>
+<script type="text/javascript" src='js/sort.js'></script>
+<script type="text/javascript" src='js/toggle.js'></script>
