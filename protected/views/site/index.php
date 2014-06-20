@@ -103,7 +103,7 @@ $this->pageTitle=Yii::app()->name;
 							<p><?php echo $month['month'] ?></p>
 						</div>
 						<div class="col-xs-2">
-							<?php echo '<p data-toggle="collapse" data-target="#detail2-header'.$count2.',#detail2-list'.$count2.'">'.$month['prod'] ?> </p>  
+							<?php echo '<p class="bg-warning" data-toggle="collapse" data-target="#detail2-header'.$count2.',#detail2-list'.$count2.'">'.$month['prod'] ?> </p>  
 						</div>
 						<div class="col-xs-2">
 							<p><?php echo $month['payout'] ?></p>
