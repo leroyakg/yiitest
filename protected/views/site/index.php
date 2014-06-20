@@ -19,27 +19,27 @@ $this->pageTitle=Yii::app()->name;
 	<div class="row table-head">
 
 		<div class="col-xs-2">
-			<h4>Name</h4>
+			<h4 class='name'>Name</h4>
 		</div>
 
 		<div class="col-xs-1">
-			<h4>YTD</h4>
+			<h4 class='ytd'>YTD</h4>
 		</div>
 
 		<div class="col-xs-1">
-			<h4>MTD</h4>
+			<h4 class='mtd'>MTD</h4>
 		</div>
 
 		<div class="col-xs-1">
-			<h4>Yesterday</h4>
+			<h4 class='yesturday'>Yesterday</h4>
 		</div>
 
 		<div class="col-xs-offset-3 col-xs-2">
-			<h4>YTD</h4>
+			<h4 class='ytd2'>YTD</h4>
 		</div>
 
 		<div class="col-xs-2">
-			<h4>MTD</h4>
+			<h4 class='mtd2'>MTD</h4>
 		</div>
 
 	</div>
@@ -72,10 +72,10 @@ $this->pageTitle=Yii::app()->name;
 				<div class="col-xs-2">
 					<p class='mtd2'><?php echo $user['MTD2']; ?></p>	
 				</div>
-			</div>
-
+				
 				<!-- SECOND ROW MONTH DETAIL ========================================
 				================================================================> -->
+				<!-- <div class="row detail"> -->
 
 				<?php echo '<div class="row collapse detail-header" id="detail-header'.$count.'">' ?>
 					<div class="col-xs-2 col-xs-offset-2">
@@ -88,10 +88,6 @@ $this->pageTitle=Yii::app()->name;
 						<h4>Payout</h4>
 					</div>
 				</div>
-
-				
-				
-
 				
 				<?php echo '<div class="collapse detail-list" id="detail-list'.$count.'">' ?>
 				<!-- ============================================================== -->
@@ -154,7 +150,6 @@ $this->pageTitle=Yii::app()->name;
 					<?php endforeach ?>
 				</div>
 				<?php echo '<div class="row collapse" id="detail-total'.$count.'">' ?>
-
 					<div class="row">
 						<div class="col-xs-2 col-xs-offset-2">
 							<h4>Total:</h4>
@@ -166,6 +161,7 @@ $this->pageTitle=Yii::app()->name;
 							<h4><?php echo $user['YTD2']; ?></h4>
 						</div>
 					</div>
+				</div>
 			</div>
 
 		<?php endforeach ?>
@@ -194,68 +190,23 @@ $this->pageTitle=Yii::app()->name;
 				<div class="col-xs-2">
 					<h4><?php echo $user['totalmpay']; ?></h4>
 				</div>
-
-
+			<div class="col-xs-1">
+				
 			</div>
 
-	</div>
+			<div class="col-xs-offset-4 col-xs-2">
+				<h4><?php echo $user['totalpay']; ?></h4>
+			</div>
+		</div>
 
-</div>
+	</div> <!-- Main Detail Information -->
+
+</div> <!-- container -->
 
 <script src="http://code.jquery.com/jquery-1.11.0.min.js"></script>
 <script src='js/sort.js'></script>
 <script type="text/javascript" charset="utf-8">
 $(function() {
-
-	///////////
-	// Sort //
-	///////////
-
-	var toggleSort;
-	$(".table-head h4").click(function() {
-		var sortBy = $(this).text().toLowerCase();
-		var sortFunc = null;
-		if(sortBy === 'name') sortFunc = (toggleSort ? sortStringAsc : sortStringDesc);
-		else sortFunc = (toggleSort ? sortIntAsc : sortIntDesc);
-
-		var sorted = $('.sort-items .'+sortBy)
-			.map(function(i, val){return val.innerHTML})
-			.sort(sortFunc)
-			.get();
-		toggleSort = !toggleSort;
-		console.log(sorted);
-	});
-
-	jQuery('.mdk_toggable_list').each(function() {
-        var divFirst = jQuery(this).find('div:first');
-        divFirstHtml = divFirst.html();
-        if (jQuery(this).hasClass('mdk_toggable_initial_show')) {
-            divFirst.html('<div class=""><div style="float:left"><a href="#" onClick="mdk_togglable_link(jQuery(this),event);" class="mdk_toggable_showing mdk_toggable_link"><img src="/img/layout_default/ico_toggle_show.png" style="width:15px;margin-right:0.5em" /></a></div><div>' + divFirstHtml + '</div></div>');
-        } else {
-            divFirst.html('<div class="row"><div style="float:left"><a href="#" onClick="mdk_togglable_link(jQuery(this),event);" class="mdk_toggable_hidden mdk_toggable_link"><img src="/img/layout_default/ico_toggle_hidden.png" style="width:15px;margin-right:0.5em" /></a></div><div>' + divFirstHtml + '</div></div>');
-        }
-    });
-
-	function togglable_link(object, e) {
-    e.preventDefault();
-    if (object.hasClass('toggable_hidden')) {
-        
-        object.removeClass('mdk_toggable_hidden');
-        object.addClass('toggable_showing');
-        var parent = object.closest('.mdk_toggable_list');
-        parent.find('.mdk_toggable_list_details:first').show(function() {
-            jQuery.event.trigger('mdk_toggable_open', [object]);
-        });
-    } else {
-        jQuery(object).find('img:first').attr('src', '/img/layout_default/ico_toggle_hidden.png');
-        object.removeClass('mdk_toggable_showing');
-        object.addClass('mdk_toggable_hidden');
-        var parent = object.closest('.mdk_toggable_list');
-        parent.find('.mdk_toggable_list_details:first').hide();
-    }
-
-
-}
 
 });
 </script>
