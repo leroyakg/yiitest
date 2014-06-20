@@ -103,8 +103,8 @@ $this->pageTitle=Yii::app()->name;
 							<div class="col-xs-2 col-xs-offset-2">
 								<p><?php echo $month['month'] ?></p>
 							</div>
-							<div class="col-xs-2 detail-prod bg-warning">
-								<p><?php echo $month['prod'] ?></p>
+							<div class="col-xs-2 detail-prod ">
+								<p class="bg-warning"><?php echo $month['prod'] ?></p>
 							</div>
 							<div class="col-xs-2">
 								<p><?php echo $month['payout'] ?></p>
@@ -137,7 +137,19 @@ $this->pageTitle=Yii::app()->name;
 										<p><?php echo $detail['payout'] ?></p>
 									</div>
 								</div>
+
 							<?php endforeach ?>
+							<!-- <div class="row">
+								<div class="col-xs-2 col-xs-offset-2">
+									<p><?php echo $detail['month'] ?></p>
+								</div>
+								<div class="col-xs-2">
+									<p class="bg-warning"><?php echo $detail['prod'] ?></p>
+								</div>
+								<div class="col-xs-2">
+									<p><?php echo $detail['payout'] ?></p>
+								</div>
+							</div> -->
 						</div>
 					
 					<?php endforeach ?>
@@ -187,8 +199,6 @@ $this->pageTitle=Yii::app()->name;
 			<h4><?php echo $user['totalpay']; ?></h4>
 		</div>
 	</div>
-
-
 </div> <!-- container -->
 
 <script type="text/javascript" src="http://code.jquery.com/jquery-1.11.0.min.js"></script>
