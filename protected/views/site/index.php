@@ -131,7 +131,7 @@ $this->pageTitle=Yii::app()->name;
 										<p><?php echo $detail['month'] ?></p>
 									</div>
 									<div class="col-xs-2">
-										<p class="bg-warning"><?php echo $detail['prod'] ?></p>
+										<p><?php echo $detail['prod'] ?></p>
 									</div>
 									<div class="col-xs-2">
 										<p><?php echo $detail['payout'] ?></p>
@@ -139,23 +139,23 @@ $this->pageTitle=Yii::app()->name;
 								</div>
 
 							<?php endforeach ?>
-							<!-- <div class="row">
+							<div class="row total-second">
 								<div class="col-xs-2 col-xs-offset-2">
-									<p><?php echo $detail['month'] ?></p>
+									<h4>Total: </h4>
 								</div>
 								<div class="col-xs-2">
-									<p class="bg-warning"><?php echo $detail['prod'] ?></p>
+									<h4><?php echo $month['prod'] ?></h4>
 								</div>
 								<div class="col-xs-2">
-									<p><?php echo $detail['payout'] ?></p>
+									<h4><?php echo $month['payout'] ?></h4>
 								</div>
-							</div> -->
+							</div>
 						</div>
 					
 					<?php endforeach ?>
 						
 					<!-- Total -->
-					<div class="row total">
+					<div class="row total-first">
 						<div class="row">
 							<div class="col-xs-2 col-xs-offset-2">
 								<h4>Total:</h4>
@@ -184,20 +184,22 @@ $this->pageTitle=Yii::app()->name;
 		</div>
 
 		<div class="col-xs-1">
-			
+			<h4><?php echo $user['totalmprod']; ?></h4>
 		</div>
 
-		<div class="col-xs-1">
-			
+		<div class="col-xs-2">
+			<h4><?php echo $user['totalyprod']; ?></h4>
 		</div>
 
-		<div class="col-xs-1">
-			
-		</div>
-
-		<div class="col-xs-offset-4 col-xs-2">
+		<div class="col-xs-offset-2 col-xs-2">
 			<h4><?php echo $user['totalpay']; ?></h4>
 		</div>
+
+		<div class="col-xs-2">
+			<h4><?php echo $user['totalmpay']; ?></h4>
+		</div>
+
+
 	</div>
 </div> <!-- container -->
 
