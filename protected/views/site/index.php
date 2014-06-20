@@ -4,7 +4,9 @@
 $this->pageTitle=Yii::app()->name;
 ?> */
 ?>
-
+<style type="text/css">
+	.bg-warning, .table-head h4{cursor: pointer;}
+</style>
 <div class="container">
 	<!-- Top Header Tags -->
 	<div class="row">
@@ -19,34 +21,34 @@ $this->pageTitle=Yii::app()->name;
 	<div class="row table-head">
 
 		<div class="col-xs-2">
-			<h4 class='name'>Name</h4>
+			<h4 class='name' data-desc='0'>Name <span class="glyphicon glyphicon-chevron-up"></span></h4>
 		</div>
 
 		<div class="col-xs-1">
-			<h4 class='ytd'>YTD</h4>
+			<h4 class='ytd' data-desc='0'>YTD</h4>
 		</div>
 
 		<div class="col-xs-1">
-			<h4 class='mtd'>MTD</h4>
-		</div>
-
-		<div class="col-xs-1">
-			<h4 class='yesturday'>Yesterday</h4>
-		</div>
-
-		<div class="col-xs-offset-3 col-xs-2">
-			<h4 class='ytd2'>YTD</h4>
+			<h4 class='mtd' data-desc='0'>MTD</h4>
 		</div>
 
 		<div class="col-xs-2">
-			<h4 class='mtd2'>MTD</h4>
+			<h4 class='yesturday' data-desc='0'>Yesterday</h4>
+		</div>
+
+		<div class="col-xs-offset-2 col-xs-2">
+			<h4 class='ytd2' data-desc='0'>YTD</h4>
+		</div>
+
+		<div class="col-xs-2">
+			<h4 class='mtd2' data-desc='0'>MTD</h4>
 		</div>
 
 	</div>
 	<!-- Main Detail Information -->
-	<div>
+	<div class="main">
 		<?php foreach($data as $user): ?>
-			<div class="main">
+			<div class="data">
 				<div class="row sort">
 					<div class="col-xs-2">
 						<p class='name'><?php echo $user['name']; ?></p>
@@ -60,11 +62,11 @@ $this->pageTitle=Yii::app()->name;
 						<p class='mtd'><?php echo $user['MTD']; ?></p>
 					</div>
 				
-					<div class="col-xs-1">
+					<div class="col-xs-2">
 						<p class='yesturday'><?php echo $user['YYTD']; ?></p>
 					</div>
 				
-					<div class="col-xs-offset-3 col-xs-2">
+					<div class="col-xs-offset-2 col-xs-2">
 						<p class='ytd2'><?php echo $user['YTD2']; ?></p>
 					</div>
 				
@@ -151,34 +153,34 @@ $this->pageTitle=Yii::app()->name;
 			</div>
 
 		<?php endforeach ?>
+	</div> <!-- Main Detail Information -->
 
-		<div class="row sort-items">
-			<div class="col-xs-2">
-				<h4>Total</h4>
-			</div>
-
-			<div class="col-xs-1">
-				<h4><?php echo $user['totalprod']; ?></h4>
-			</div>
-
-			<div class="col-xs-1">
-				
-			</div>
-
-			<div class="col-xs-1">
-				
-			</div>
-
-			<div class="col-xs-1">
-				
-			</div>
-
-			<div class="col-xs-offset-4 col-xs-2">
-				<h4><?php echo $user['totalpay']; ?></h4>
-			</div>
+	<div class="row sort-items">
+		<div class="col-xs-2">
+			<h4>Total</h4>
 		</div>
 
-	</div> <!-- Main Detail Information -->
+		<div class="col-xs-1">
+			<h4><?php echo $user['totalprod']; ?></h4>
+		</div>
+
+		<div class="col-xs-1">
+			
+		</div>
+
+		<div class="col-xs-1">
+			
+		</div>
+
+		<div class="col-xs-1">
+			
+		</div>
+
+		<div class="col-xs-offset-4 col-xs-2">
+			<h4><?php echo $user['totalpay']; ?></h4>
+		</div>
+	</div>
+
 
 </div> <!-- container -->
 
