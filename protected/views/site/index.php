@@ -75,7 +75,7 @@ $this->pageTitle=Yii::app()->name;
 				
 				<!-- SECOND ROW MONTH DETAIL ========================================
 				================================================================> -->
-				<div class="row detail">
+				<div class="row detail second-row">
 					<div class="col-xs-2 col-xs-offset-2">
 						<h4>Month</h4>
 					</div>
@@ -89,11 +89,11 @@ $this->pageTitle=Yii::app()->name;
 				<!-- ============================================================== -->
 				
 				<?php foreach ($user['datesresume'] as $month): ?>
-					<div class="row detail">
+					<div class="row detail second-row">
 						<div class="col-xs-2 col-xs-offset-2">
 							<p><?php echo $month['month'] ?></p>
 						</div>
-						<div class="col-xs-2">
+						<div class="col-xs-2 detail-prod">
 							<p><?php echo $month['prod'] ?></p>
 						</div>
 						<div class="col-xs-2">
@@ -103,7 +103,7 @@ $this->pageTitle=Yii::app()->name;
 				
 					<!-- THIRD TABLE DETAIL MONTH DETAIL ========================================
 					================================================================> -->
-					<div class="row hidden">
+					<div class="row third-row">
 						<div class="col-xs-2 col-xs-offset-2">
 							<h4>Date</h4>
 						</div>
@@ -116,7 +116,7 @@ $this->pageTitle=Yii::app()->name;
 					</div>
 				
 					<?php foreach ($month['allmonth'] as $detail): ?>
-						<div class="row hidden">
+						<div class="row third-row">
 							<div class="col-xs-2 col-xs-offset-2">
 								<p><?php echo $detail['month'] ?></p>
 							</div>
@@ -132,7 +132,7 @@ $this->pageTitle=Yii::app()->name;
 				<?php endforeach ?>
 					
 				<!-- Total -->
-				<div class="row total">
+				<div class="row total second-row">
 					<div class="row">
 						<div class="col-xs-2 col-xs-offset-2">
 							<h4>Total:</h4>
@@ -183,11 +183,20 @@ $this->pageTitle=Yii::app()->name;
 <script src='js/sort.js'></script>
 <script type="text/javascript" charset="utf-8">
 $(function() {
-	$('.detail, .total').hide();
+	$('.second-row, .third-row').hide();
+	// toggle animation when clicking YTD values.
 	$(".sort p.ytd").click(function() {
-		$(this).parent('.main')
-			.find('.detail, .total')
+		$(this).parent()
+			.parent()
+			.parent()
+			.find('.second-row')
 			.slideToggle(300);
 	});
+	$('.second-row .detail-prod').click(function() {
+		$(this).parent()
+			.parent()
+			.find('.third-row')
+			.slideToggle(300);
+	})
 });
 </script>
