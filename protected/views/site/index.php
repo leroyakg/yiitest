@@ -75,37 +75,10 @@ $this->pageTitle=Yii::app()->name;
 				
 				<!-- SECOND ROW MONTH DETAIL ========================================
 				================================================================> -->
-				<div class="row detail second-row">
-					<div class="col-xs-2 col-xs-offset-2">
-						<h4>Month</h4>
-					</div>
-					<div class="col-xs-2">
-						<h4>Production</h4>
-					</div>
-					<div class="col-xs-2">
-						<h4>Payout</h4>
-					</div>
-				</div>
-				<!-- ============================================================== -->
-				
-				<?php foreach ($user['datesresume'] as $month): ?>
-					<div class="row detail second-row">
+				<div class="second-row">
+					<div class="row detail">
 						<div class="col-xs-2 col-xs-offset-2">
-							<p><?php echo $month['month'] ?></p>
-						</div>
-						<div class="col-xs-2 detail-prod bg-warning">
-							<p><?php echo $month['prod'] ?></p>
-						</div>
-						<div class="col-xs-2">
-							<p><?php echo $month['payout'] ?></p>
-						</div>
-					</div>
-				
-					<!-- THIRD TABLE DETAIL MONTH DETAIL ========================================
-					================================================================> -->
-					<div class="row third-row">
-						<div class="col-xs-2 col-xs-offset-2">
-							<h4>Date</h4>
+							<h4>Month</h4>
 						</div>
 						<div class="col-xs-2">
 							<h4>Production</h4>
@@ -114,34 +87,64 @@ $this->pageTitle=Yii::app()->name;
 							<h4>Payout</h4>
 						</div>
 					</div>
-				
-					<?php foreach ($month['allmonth'] as $detail): ?>
-						<div class="row third-row">
-							<div class="col-xs-2 col-xs-offset-2">
-								<p><?php echo $detail['month'] ?></p>
-							</div>
-							<div class="col-xs-2">
-								<p class="bg-warning"><?php echo $detail['prod'] ?></p>
-							</div>
-							<div class="col-xs-2">
-								<p><?php echo $detail['payout'] ?></p>
-							</div>
-						</div>
-					<?php endforeach ?>
-				
-				<?php endforeach ?>
+					<!-- ============================================================== -->
 					
-				<!-- Total -->
-				<div class="row total second-row">
-					<div class="row">
-						<div class="col-xs-2 col-xs-offset-2">
-							<h4>Total:</h4>
+					<?php foreach ($user['datesresume'] as $month): ?>
+						<div class="row detail">
+							<div class="col-xs-2 col-xs-offset-2">
+								<p><?php echo $month['month'] ?></p>
+							</div>
+							<div class="col-xs-2 detail-prod bg-warning">
+								<p><?php echo $month['prod'] ?></p>
+							</div>
+							<div class="col-xs-2">
+								<p><?php echo $month['payout'] ?></p>
+							</div>
 						</div>
-						<div class="col-xs-2">
-							<h4><?php echo $user['YTD']; ?></h4>
+					
+						<!-- THIRD TABLE DETAIL MONTH DETAIL ========================================
+						================================================================> -->
+						<div class="third-row">
+							<div class="row">
+								<div class="col-xs-2 col-xs-offset-2">
+									<h4>Date</h4>
+								</div>
+								<div class="col-xs-2">
+									<h4>Production</h4>
+								</div>
+								<div class="col-xs-2">
+									<h4>Payout</h4>
+								</div>
+							</div>
+							<?php foreach ($month['allmonth'] as $detail): ?>
+								<div class="row">
+									<div class="col-xs-2 col-xs-offset-2">
+										<p><?php echo $detail['month'] ?></p>
+									</div>
+									<div class="col-xs-2">
+										<p class="bg-warning"><?php echo $detail['prod'] ?></p>
+									</div>
+									<div class="col-xs-2">
+										<p><?php echo $detail['payout'] ?></p>
+									</div>
+								</div>
+							<?php endforeach ?>
 						</div>
-						<div class="col-xs-2">
-							<h4><?php echo $user['YTD2']; ?></h4>
+					
+					<?php endforeach ?>
+						
+					<!-- Total -->
+					<div class="row total">
+						<div class="row">
+							<div class="col-xs-2 col-xs-offset-2">
+								<h4>Total:</h4>
+							</div>
+							<div class="col-xs-2">
+								<h4><?php echo $user['YTD']; ?></h4>
+							</div>
+							<div class="col-xs-2">
+								<h4><?php echo $user['YTD2']; ?></h4>
+							</div>
 						</div>
 					</div>
 				</div>
@@ -194,8 +197,6 @@ $(function() {
 	});
 	$('.second-row .detail-prod').click(function() {
 		$(this).parent()
-			.next()
-			.slideToggle(300)
 			.next()
 			.slideToggle(300);
 	})
