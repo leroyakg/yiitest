@@ -19,63 +19,63 @@ $this->pageTitle=Yii::app()->name;
 	<div class="row table-head">
 
 		<div class="col-xs-2">
-			<h4>Name</h4>
+			<h4 class='name'>Name</h4>
 		</div>
 
 		<div class="col-xs-1">
-			<h4>YTD</h4>
+			<h4 class='ytd'>YTD</h4>
 		</div>
 
 		<div class="col-xs-1">
-			<h4>MTD</h4>
+			<h4 class='mtd'>MTD</h4>
 		</div>
 
 		<div class="col-xs-1">
-			<h4>Yesterday</h4>
+			<h4 class='yesturday'>Yesterday</h4>
 		</div>
 
 		<div class="col-xs-offset-3 col-xs-2">
-			<h4>YTD</h4>
+			<h4 class='ytd2'>YTD</h4>
 		</div>
 
 		<div class="col-xs-2">
-			<h4>MTD</h4>
+			<h4 class='mtd2'>MTD</h4>
 		</div>
 
 	</div>
 	<!-- Main Detail Information -->
-	<div class="sort">
+	<div>
 		<?php foreach($data as $user): ?>
-			<div class="row sort-items">
-				<div class="col-xs-2">
-					<p class='name'><?php echo $user['name']; ?></p>
+			<div class="main">
+				<div class="row sort">
+					<div class="col-xs-2">
+						<p class='name'><?php echo $user['name']; ?></p>
+					</div>
+				
+					<div class="col-xs-1">
+						<p class='ytd'><?php echo $user['YTD']; ?></p>
+					</div>
+				
+					<div class="col-xs-1">
+						<p class='mtd'><?php echo $user['MTD']; ?></p>
+					</div>
+				
+					<div class="col-xs-1">
+						<p class='yesturday'><?php echo $user['YYTD']; ?></p>
+					</div>
+				
+					<div class="col-xs-offset-3 col-xs-2">
+						<p class='ytd2'><?php echo $user['YTD2']; ?></p>
+					</div>
+				
+					<div class="col-xs-2">
+						<p class='mtd2'><?php echo $user['MTD2']; ?></p>	
+					</div>
 				</div>
-
-				<div class="col-xs-1">
-					<p class='ytd'><?php echo $user['YTD']; ?></p>
-				</div>
-
-				<div class="col-xs-1">
-					<p class='mtd'><?php echo $user['MTD']; ?></p>
-				</div>
-
-				<div class="col-xs-1">
-					<p class='yesturday'><?php echo $user['YYTD']; ?></p>
-				</div>
-
-				<div class="col-xs-offset-3 col-xs-2">
-					<p class='ytd2'><?php echo $user['YTD2']; ?></p>
-				</div>
-
-				<div class="col-xs-2">
-					<p class='mtd2'><?php echo $user['MTD2']; ?></p>	
-				</div>
-			</div>
-
+				
 				<!-- SECOND ROW MONTH DETAIL ========================================
 				================================================================> -->
-
-				<div class="row detail hidden">
+				<div class="row detail">
 					<div class="col-xs-2 col-xs-offset-2">
 						<h4>Month</h4>
 					</div>
@@ -86,24 +86,23 @@ $this->pageTitle=Yii::app()->name;
 						<h4>Payout</h4>
 					</div>
 				</div>
-
-				
 				<!-- ============================================================== -->
+				
 				<?php foreach ($user['datesresume'] as $month): ?>
-				<div class="row detail hidden">
-					<div class="col-xs-2 col-xs-offset-2">
-						<p><?php echo $month['month'] ?></p>
+					<div class="row detail">
+						<div class="col-xs-2 col-xs-offset-2">
+							<p><?php echo $month['month'] ?></p>
+						</div>
+						<div class="col-xs-2">
+							<p><?php echo $month['prod'] ?></p>
+						</div>
+						<div class="col-xs-2">
+							<p><?php echo $month['payout'] ?></p>
+						</div>
 					</div>
-					<div class="col-xs-2">
-						<p><?php echo $month['prod'] ?></p>
-					</div>
-					<div class="col-xs-2">
-						<p><?php echo $month['payout'] ?></p>
-					</div>
-				</div>
-
-				<!-- THIRD TABLE DETAIL MONTH DETAIL ========================================
-				================================================================> -->
+				
+					<!-- THIRD TABLE DETAIL MONTH DETAIL ========================================
+					================================================================> -->
 					<div class="row hidden">
 						<div class="col-xs-2 col-xs-offset-2">
 							<h4>Date</h4>
@@ -115,29 +114,25 @@ $this->pageTitle=Yii::app()->name;
 							<h4>Payout</h4>
 						</div>
 					</div>
-
-
+				
 					<?php foreach ($month['allmonth'] as $detail): ?>
-
-					<div class="row hidden">
-						<div class="col-xs-2 col-xs-offset-2">
-							<p><?php echo $detail['month'] ?></p>
+						<div class="row hidden">
+							<div class="col-xs-2 col-xs-offset-2">
+								<p><?php echo $detail['month'] ?></p>
+							</div>
+							<div class="col-xs-2">
+								<p><?php echo $detail['prod'] ?></p>
+							</div>
+							<div class="col-xs-2">
+								<p><?php echo $detail['payout'] ?></p>
+							</div>
 						</div>
-						<div class="col-xs-2">
-							<p><?php echo $detail['prod'] ?></p>
-						</div>
-						<div class="col-xs-2">
-							<p><?php echo $detail['payout'] ?></p>
-						</div>
-					</div>
-						
-
 					<?php endforeach ?>
-
+				
 				<?php endforeach ?>
-
-				<div class="row hidden">
-
+					
+				<!-- Total -->
+				<div class="row total">
 					<div class="row">
 						<div class="col-xs-2 col-xs-offset-2">
 							<h4>Total:</h4>
@@ -149,74 +144,50 @@ $this->pageTitle=Yii::app()->name;
 							<h4><?php echo $user['YTD2']; ?></h4>
 						</div>
 					</div>
-<<<<<<< HEAD
-					
-=======
->>>>>>> aab3bdc06a4040eaaf8fbbf768cbe2d47d1166db
+				</div>
 			</div>
 
 		<?php endforeach ?>
 
 		<div class="row sort-items">
-				<div class="col-xs-2">
-					<h4>Total</h4>
-				</div>
-
-				<div class="col-xs-1">
-					<h4><?php echo $user['totalprod']; ?></h4>
-				</div>
-
-				<div class="col-xs-1">
-					
-				</div>
-
-				<div class="col-xs-1">
-					
-				</div>
-
-				<div class="col-xs-1">
-					
-				</div>
-
-				<div class="col-xs-offset-4 col-xs-2">
-					<h4><?php echo $user['totalpay']; ?></h4>
-				</div>
-
-
+			<div class="col-xs-2">
+				<h4>Total</h4>
 			</div>
 
-	</div>
+			<div class="col-xs-1">
+				<h4><?php echo $user['totalprod']; ?></h4>
+			</div>
 
-</div>
+			<div class="col-xs-1">
+				
+			</div>
+
+			<div class="col-xs-1">
+				
+			</div>
+
+			<div class="col-xs-1">
+				
+			</div>
+
+			<div class="col-xs-offset-4 col-xs-2">
+				<h4><?php echo $user['totalpay']; ?></h4>
+			</div>
+		</div>
+
+	</div> <!-- Main Detail Information -->
+
+</div> <!-- container -->
 
 <script src="http://code.jquery.com/jquery-1.11.0.min.js"></script>
 <script src='js/sort.js'></script>
 <script type="text/javascript" charset="utf-8">
 $(function() {
-
-	$("p.ytd").click(function() {
-		$(".level1").toogle();
-		//$(this).next().slideToggle(300);
-		console.log('click');
-	});
-
-	///////////
-	// Sort //
-	///////////
-	var toggleSort;
-	$(".table-head h4").click(function() {
-		var sortBy = $(this).text().toLowerCase();
-		var sortFunc = null;
-		if(sortBy === 'name') sortFunc = (toggleSort ? sortStringAsc : sortStringDesc);
-		else sortFunc = (toggleSort ? sortIntAsc : sortIntDesc);
-
-		var sorted = $('.sort-items .'+sortBy)
-			// get the values from the DOM
-			.map(function(i, val){return val.innerHTML})
-			.sort(sortFunc)
-			.get();
-		toggleSort = !toggleSort;
-		console.log(sorted);
+	$('.detail, .total').hide();
+	$(".sort p.ytd").click(function() {
+		$(this).parent('.main')
+			.find('.detail, .total')
+			.slideToggle(300);
 	});
 });
 </script>
