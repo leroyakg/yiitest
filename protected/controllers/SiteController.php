@@ -112,8 +112,10 @@ class SiteController extends Controller
 			$criteria->select='*';
 			$criteria->condition='userSeqNo='.$seqno.' group by MONTH(date_sale)';
 			$sales=Sale::model()->findAll($criteria);
-
+			
+				//este esta malo
 				foreach ($sales as $sale) {
+
 				//TOTAL DATE'S IN A MONTH		
 				$allmonth = array();
 				$criteria=new CDbCriteria;
@@ -121,13 +123,29 @@ class SiteController extends Controller
 				$criteria->condition='userSeqNo='.$seqno.' and MONTH(date_sale)= '.Yii::app()->dateFormatter->format("M", $sale->date_sale);
 				$sales=Sale::model()->findAll($criteria);
 
+				$monthprod=0;
+				$monthpay=0;
 					foreach ($sales as $sale) {
-						$allmonth[] = array('month' => $sale->date_sale, 'prod' => $sale->prod, 'payout' => $sale->payout);
+						$monthprod=$monthprod + $sale->prod;
+						$monthpay= $monthpay + $sale->payout;
+
+						$allmonth[] = array('month' => $sale->date_sale, 
+							'prod' => $sale->prod, 
+							'payout' => $sale->payout,
+							);
 					}
 
+				
 				$allmonthprod = $allmonthprod + $sale->prod;
 				$allmonthpay = $allmonthpay + $sale->payout;
-				$datesresume[] = array('month' => Yii::app()->dateFormatter->format("MM/yy", $sale->date_sale), 'prod' => $sale->prod, 'payout' => $sale->payout, 'allmonth' => $allmonth);
+
+				$datesresume[] = array('month' => Yii::app()->dateFormatter->format("MM/yy", $sale->date_sale), 
+					'prod' => $sale->prod, 
+					'payout' => $sale->payout, 
+					'allmonth' => $allmonth,
+					'monthpay' => $monthpay,
+					'monthprod' => $monthprod
+					);
 			 	}
 			// FOR MTD CALCULATION
 			$MTD = 0;

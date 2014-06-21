@@ -96,10 +96,10 @@ $this->pageTitle=Yii::app()->name;
 										<p class='month'><?php echo $month['month'] ?></p>
 									</div>
 									<div class="col-xs-2 ytd-prod ">
-										<p class="bg-warning production"><?php echo $month['prod'] ?></p>
+										<p class="bg-warning production"><?php echo $month['monthprod'] ?></p>
 									</div>
 									<div class="col-xs-2">
-										<p class='payout'><?php echo $month['payout'] ?></p>
+										<p class='payout'><?php echo $month['monthpay'] ?></p>
 									</div>
 								</div>
 							
@@ -117,7 +117,10 @@ $this->pageTitle=Yii::app()->name;
 											<h4 data-desc='0' class='payout'>Payout</h4>
 										</div>
 									</div>
+									<div>
+										
 									<?php foreach ($month['allmonth'] as $detail): ?>
+									  <div class="client-third">  	
 										<div class="row">
 											<div class="col-xs-2 col-xs-offset-2">
 												<p class='date'><?php echo $detail['month'] ?></p>
@@ -129,17 +132,19 @@ $this->pageTitle=Yii::app()->name;
 												<p class='payout'><?php echo $detail['payout'] ?></p>
 											</div>
 										</div>
+									  </div>
 
 									<?php endforeach ?>
+									</div>
 									<div class="row total-third">
 										<div class="col-xs-2 col-xs-offset-2">
 											<h4 data-desc='0'>Total: </h4>
 										</div>
 										<div class="col-xs-2">
-											<h4 data-desc='0'><?php echo $month['prod'] ?></h4>
+											<h4 data-desc='0'><?php echo $month['monthprod'] ?></h4>
 										</div>
 										<div class="col-xs-2">
-											<h4 data-desc='0'><?php echo $month['payout'] ?></h4>
+											<h4 data-desc='0'><?php echo $month['monthpay'] ?></h4>
 										</div>
 									</div>
 								</div>

@@ -2094,3 +2094,37 @@ Stack trace:
 #12 {main}
 REQUEST_URI=/yiitest/
 ---
+2014/06/21 07:24:33 [error] [php] Undefined index: monthprod (C:\wamp\www\yiitest\protected\views\site\index.php:99)
+Stack trace:
+#0 C:\wamp\www\yiitest\framework\web\CController.php(869): SiteController->renderFile()
+#1 C:\wamp\www\yiitest\framework\web\CController.php(782): SiteController->renderPartial()
+#2 C:\wamp\www\yiitest\protected\controllers\SiteController.php(209): SiteController->render()
+#3 C:\wamp\www\yiitest\framework\web\actions\CInlineAction.php(49): SiteController->actionIndex()
+#4 C:\wamp\www\yiitest\framework\web\CController.php(308): CInlineAction->runWithParams()
+#5 C:\wamp\www\yiitest\framework\web\CController.php(286): SiteController->runAction()
+#6 C:\wamp\www\yiitest\framework\web\CController.php(265): SiteController->runActionWithFilters()
+#7 C:\wamp\www\yiitest\framework\web\CWebApplication.php(282): SiteController->run()
+#8 C:\wamp\www\yiitest\framework\web\CWebApplication.php(141): CWebApplication->runController()
+#9 C:\wamp\www\yiitest\framework\base\CApplication.php(184): CWebApplication->processRequest()
+#10 C:\wamp\www\yiitest\index.php(13): CWebApplication->run()
+REQUEST_URI=/yiitest/
+in C:\wamp\www\yiitest\protected\views\site\index.php (99)
+in C:\wamp\www\yiitest\protected\controllers\SiteController.php (209)
+in C:\wamp\www\yiitest\index.php (13)
+2014/06/21 07:30:46 [error] [php] Undefined index: monthprod (C:\wamp\www\yiitest\protected\views\site\index.php:129)
+Stack trace:
+#0 C:\wamp\www\yiitest\framework\web\CController.php(869): SiteController->renderFile()
+#1 C:\wamp\www\yiitest\framework\web\CController.php(782): SiteController->renderPartial()
+#2 C:\wamp\www\yiitest\protected\controllers\SiteController.php(218): SiteController->render()
+#3 C:\wamp\www\yiitest\framework\web\actions\CInlineAction.php(49): SiteController->actionIndex()
+#4 C:\wamp\www\yiitest\framework\web\CController.php(308): CInlineAction->runWithParams()
+#5 C:\wamp\www\yiitest\framework\web\CController.php(286): SiteController->runAction()
+#6 C:\wamp\www\yiitest\framework\web\CController.php(265): SiteController->runActionWithFilters()
+#7 C:\wamp\www\yiitest\framework\web\CWebApplication.php(282): SiteController->run()
+#8 C:\wamp\www\yiitest\framework\web\CWebApplication.php(141): CWebApplication->runController()
+#9 C:\wamp\www\yiitest\framework\base\CApplication.php(184): CWebApplication->processRequest()
+#10 C:\wamp\www\yiitest\index.php(13): CWebApplication->run()
+REQUEST_URI=/yiitest/
+in C:\wamp\www\yiitest\protected\views\site\index.php (129)
+in C:\wamp\www\yiitest\protected\controllers\SiteController.php (218)
+in C:\wamp\www\yiitest\index.php (13)

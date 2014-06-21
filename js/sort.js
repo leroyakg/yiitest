@@ -77,5 +77,5 @@ $(function() {
     $('.table-head:first h4').superSort('.first-row', '.data');
     $('.ytd-head h4').superSort('.second-row', '.data-ytd');
     $('.client-head h4').superSort('.second-row', '.data-client');
-    $('.third-row .table-head h4').superSort('.third-row', '.client-third')
+    $('.third-row .table-head h4').superSort('.third-row', '.client-third');
 });
