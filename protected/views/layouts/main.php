@@ -58,7 +58,7 @@
 <script type="text/javascript">
   $(function() {
     $('.table-head h4').superSort('.first-row', '.data');
-    $('.second-row h4').superSort('.second-row', '.data-second');
+    $('.second-row h4').superSort('.second-row', '.data-second-ytd');
   });
 </script>
 </body>

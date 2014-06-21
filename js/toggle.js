@@ -8,7 +8,7 @@ $(function() {
 			.find('.second-row, .total-second')
 			.slideToggle(300);
 	});
-	$('.second-row .detail-prod').click(function() {
+	$('.second-row .ytd-prod').click(function() {
 		$(this).parent()
 			.next()
 			.slideToggle(300);

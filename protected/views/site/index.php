@@ -73,10 +73,10 @@ $this->pageTitle=Yii::app()->name;
 					</div>
 				</div>
 				
-				<!-- SECOND ROW MONTH DETAIL ========================================
-				================================================================> -->
 				<div class="second-row">
-					<div class="row detail">
+					<!-- SECOND ROW MONTH DETAIL ========================================
+					================================================================> -->
+					<div class="row">
 						<div class="col-xs-2 col-xs-offset-2">
 							<h4 class='month'>Month</h4>
 						</div>
@@ -90,12 +90,12 @@ $this->pageTitle=Yii::app()->name;
 					<!-- ============================================================== -->
 					
 					<?php foreach ($user['datesresume'] as $month): ?>
-						<div class="data-second">
-							<div class="row detail">
+						<div class="data-second-ytd">
+							<div class="row">
 								<div class="col-xs-2 col-xs-offset-2">
 									<p class='month'><?php echo $month['month'] ?></p>
 								</div>
-								<div class="col-xs-2 detail-prod ">
+								<div class="col-xs-2 ytd-prod ">
 									<p class="bg-warning production"><?php echo $month['prod'] ?></p>
 								</div>
 								<div class="col-xs-2">
@@ -145,6 +145,78 @@ $this->pageTitle=Yii::app()->name;
 							</div>
 						</div>
 					<?php endforeach ?>
+
+					<!-- SECOND ROW CLIENT DETAIL ========================================
+					================================================================> -->
+					<div class="row">
+						<div class="col-xs-2 col-xs-offset-2">
+							<h4 class='client'>Client</h4>
+						</div>
+						<div class="col-xs-2">
+							<h4 class='production'>Production</h4>
+						</div>
+						<div class="col-xs-2">
+							<h4 class='payout'>Payout</h4>
+						</div>
+					</div>
+					<?php foreach ($user['clientsresume'] as $client): ?>
+						<div class="data-second-client">
+							<div class="row">
+								<div class="col-xs-2 col-xs-offset-2">
+									<h4 class='client'><?php echo $client['name'] ?></h4>
+								</div>
+								<div class="col-xs-2">
+									<h4 class='production'><?php echo $client['prod'] ?></h4>
+								</div>
+								<div class="col-xs-2">
+									<h4 class='payout'><?php echo $client['payout'] ?></h4>
+								</div>
+							</div>
+
+
+							<!-- THIRD TABLE DETAIL CLIENT DETAIL ========================================
+								================================================================> -->
+							<div class="third-row">
+								<div class="row">
+									<div class="col-xs-2 col-xs-offset-2">
+										<h4>Date</h4>
+									</div>
+									<div class="col-xs-2">
+										<h4>Production</h4>
+									</div>
+									<div class="col-xs-2">
+										<h4>Payout</h4>
+									</div>
+								</div>
+								<?php foreach ($month['allmonth'] as $detail): ?>
+									<div class="row">
+										<div class="col-xs-2 col-xs-offset-2">
+											<p><?php echo $detail['month'] ?></p>
+										</div>
+										<div class="col-xs-2">
+											<p><?php echo $detail['prod'] ?></p>
+										</div>
+										<div class="col-xs-2">
+											<p><?php echo $detail['payout'] ?></p>
+										</div>
+									</div>
+
+								<?php endforeach ?>
+								<div class="row total-third">
+									<div class="col-xs-2 col-xs-offset-2">
+										<h4>Total: </h4>
+									</div>
+									<div class="col-xs-2">
+										<h4><?php echo $month['prod'] ?></h4>
+									</div>
+									<div class="col-xs-2">
+										<h4><?php echo $month['payout'] ?></h4>
+									</div>
+								</div>
+							</div>
+						</div> <!-- .data-second-client -->
+					<?php endforeach ?>
+
 				</div> <!-- second row -->
 				<!-- Total Second -->
 				<div class="row total-second">
