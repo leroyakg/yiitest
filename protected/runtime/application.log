@@ -1981,3 +1981,56 @@ REQUEST_URI=/yiitest/
 in C:\wamp\www\yiitest\protected\views\site\index.php (194)
 in C:\wamp\www\yiitest\protected\controllers\SiteController.php (202)
 in C:\wamp\www\yiitest\index.php (13)
+2014/06/21 06:32:46 [error] [php] Trying to get property of non-object (C:\wamp\www\yiitest\protected\controllers\SiteController.php:88)
+Stack trace:
+#0 C:\wamp\www\yiitest\framework\web\CController.php(286): SiteController->runAction()
+#1 C:\wamp\www\yiitest\framework\web\CController.php(265): SiteController->runActionWithFilters()
+#2 C:\wamp\www\yiitest\framework\web\CWebApplication.php(282): SiteController->run()
+#3 C:\wamp\www\yiitest\framework\web\CWebApplication.php(141): CWebApplication->runController()
+#4 C:\wamp\www\yiitest\framework\base\CApplication.php(184): CWebApplication->processRequest()
+#5 C:\wamp\www\yiitest\index.php(13): CWebApplication->run()
+REQUEST_URI=/yiitest/
+in C:\wamp\www\yiitest\protected\controllers\SiteController.php (88)
+in C:\wamp\www\yiitest\index.php (13)
+2014/06/21 06:33:09 [error] [exception.CException] exception 'CException' with message 'Property "Sale.name" is not defined.' in C:\wamp\www\yiitest\framework\base\CComponent.php:130
+Stack trace:
+#0 C:\wamp\www\yiitest\framework\db\ar\CActiveRecord.php(145): CComponent->__get('name')
+#1 C:\wamp\www\yiitest\framework\base\CModel.php(596): CActiveRecord->__get('name')
+#2 C:\wamp\www\yiitest\protected\views\site\index.php(169): CModel->offsetGet('name')
+#3 C:\wamp\www\yiitest\framework\web\CBaseController.php(126): require('C:\wamp\www\yii...')
+#4 C:\wamp\www\yiitest\framework\web\CBaseController.php(95): CBaseController->renderInternal('C:\wamp\www\yii...', Array, true)
+#5 C:\wamp\www\yiitest\framework\web\CController.php(869): CBaseController->renderFile('C:\wamp\www\yii...', Array, true)
+#6 C:\wamp\www\yiitest\framework\web\CController.php(782): CController->renderPartial('index', Array, true)
+#7 C:\wamp\www\yiitest\protected\controllers\SiteController.php(201): CController->render('index', Array)
+#8 C:\wamp\www\yiitest\framework\web\actions\CInlineAction.php(49): SiteController->actionIndex()
+#9 C:\wamp\www\yiitest\framework\web\CController.php(308): CInlineAction->runWithParams(Array)
+#10 C:\wamp\www\yiitest\framework\web\CController.php(286): CController->runAction(Object(CInlineAction))
+#11 C:\wamp\www\yiitest\framework\web\CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#12 C:\wamp\www\yiitest\framework\web\CWebApplication.php(282): CController->run('')
+#13 C:\wamp\www\yiitest\framework\web\CWebApplication.php(141): CWebApplication->runController('')
+#14 C:\wamp\www\yiitest\framework\base\CApplication.php(184): CWebApplication->processRequest()
+#15 C:\wamp\www\yiitest\index.php(13): CApplication->run()
+#16 {main}
+REQUEST_URI=/yiitest/
+---
+2014/06/21 06:40:34 [error] [exception.CException] exception 'CException' with message 'Property "Sale.name" is not defined.' in C:\wamp\www\yiitest\framework\base\CComponent.php:130
+Stack trace:
+#0 C:\wamp\www\yiitest\framework\db\ar\CActiveRecord.php(145): CComponent->__get('name')
+#1 C:\wamp\www\yiitest\framework\base\CModel.php(596): CActiveRecord->__get('name')
+#2 C:\wamp\www\yiitest\protected\views\site\index.php(169): CModel->offsetGet('name')
+#3 C:\wamp\www\yiitest\framework\web\CBaseController.php(126): require('C:\wamp\www\yii...')
+#4 C:\wamp\www\yiitest\framework\web\CBaseController.php(95): CBaseController->renderInternal('C:\wamp\www\yii...', Array, true)
+#5 C:\wamp\www\yiitest\framework\web\CController.php(869): CBaseController->renderFile('C:\wamp\www\yii...', Array, true)
+#6 C:\wamp\www\yiitest\framework\web\CController.php(782): CController->renderPartial('index', Array, true)
+#7 C:\wamp\www\yiitest\protected\controllers\SiteController.php(201): CController->render('index', Array)
+#8 C:\wamp\www\yiitest\framework\web\actions\CInlineAction.php(49): SiteController->actionIndex()
+#9 C:\wamp\www\yiitest\framework\web\CController.php(308): CInlineAction->runWithParams(Array)
+#10 C:\wamp\www\yiitest\framework\web\CController.php(286): CController->runAction(Object(CInlineAction))
+#11 C:\wamp\www\yiitest\framework\web\CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#12 C:\wamp\www\yiitest\framework\web\CWebApplication.php(282): CController->run('')
+#13 C:\wamp\www\yiitest\framework\web\CWebApplication.php(141): CWebApplication->runController('')
+#14 C:\wamp\www\yiitest\framework\base\CApplication.php(184): CWebApplication->processRequest()
+#15 C:\wamp\www\yiitest\index.php(13): CApplication->run()
+#16 {main}
+REQUEST_URI=/yiitest/
+---
