@@ -79,7 +79,7 @@ class SiteController extends Controller
 
 					//Query 
 					$criteria->select='*';
-					$criteria->condition='clientSeqNo='.$sale->clientSeqNo.' and YEAR(date_sale)= '.$year;
+					$criteria->condition='userSeqNo = '.$sale->userSeqNo. ' and clientSeqNo='.$sale->clientSeqNo.' and YEAR(date_sale)= '.$year;
 					$details=Sale::model()->findAll($criteria);
 					//Recover all data for each client, for the third table.
 					foreach ($details as $detail) {

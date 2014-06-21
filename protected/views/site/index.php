@@ -214,10 +214,10 @@ $this->pageTitle=Yii::app()->name;
 											<h4>Total: </h4>
 										</div>
 										<div class="col-xs-2">
-											<h4><?php echo $detail['prod'] ?></h4>
+											<h4><?php echo $client['prod'] ?></h4>
 										</div>
 										<div class="col-xs-2">
-											<h4><?php echo $detail['payout'] ?></h4>
+											<h4><?php echo $client['payout'] ?></h4>
 										</div>
 									</div>
 								</div>
