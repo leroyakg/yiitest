@@ -1874,3 +1874,42 @@ Stack trace:
 REQUEST_URI=/yiitest/
 in C:\wamp\www\yiitest\protected\controllers\SiteController.php (161)
 in C:\wamp\www\yiitest\index.php (13)
+2014/06/21 04:30:51 [error] [php] Undefined variable: clients (C:\wamp\www\yiitest\protected\views\site\index.php:195)
+Stack trace:
+#0 C:\wamp\www\yiitest\framework\web\CController.php(869): SiteController->renderFile()
+#1 C:\wamp\www\yiitest\framework\web\CController.php(782): SiteController->renderPartial()
+#2 C:\wamp\www\yiitest\protected\controllers\SiteController.php(190): SiteController->render()
+#3 C:\wamp\www\yiitest\framework\web\actions\CInlineAction.php(49): SiteController->actionIndex()
+#4 C:\wamp\www\yiitest\framework\web\CController.php(308): CInlineAction->runWithParams()
+#5 C:\wamp\www\yiitest\framework\web\CController.php(286): SiteController->runAction()
+#6 C:\wamp\www\yiitest\framework\web\CController.php(265): SiteController->runActionWithFilters()
+#7 C:\wamp\www\yiitest\framework\web\CWebApplication.php(282): SiteController->run()
+#8 C:\wamp\www\yiitest\framework\web\CWebApplication.php(141): CWebApplication->runController()
+#9 C:\wamp\www\yiitest\framework\base\CApplication.php(184): CWebApplication->processRequest()
+#10 C:\wamp\www\yiitest\index.php(13): CWebApplication->run()
+REQUEST_URI=/yiitest/
+in C:\wamp\www\yiitest\protected\views\site\index.php (195)
+in C:\wamp\www\yiitest\protected\controllers\SiteController.php (190)
+in C:\wamp\www\yiitest\index.php (13)
+2014/06/21 04:41:23 [error] [php] Undefined variable: clientId (C:\wamp\www\yiitest\protected\controllers\SiteController.php:74)
+Stack trace:
+#0 C:\wamp\www\yiitest\framework\web\CController.php(286): SiteController->runAction()
+#1 C:\wamp\www\yiitest\framework\web\CController.php(265): SiteController->runActionWithFilters()
+#2 C:\wamp\www\yiitest\framework\web\CWebApplication.php(282): SiteController->run()
+#3 C:\wamp\www\yiitest\framework\web\CWebApplication.php(141): CWebApplication->runController()
+#4 C:\wamp\www\yiitest\framework\base\CApplication.php(184): CWebApplication->processRequest()
+#5 C:\wamp\www\yiitest\index.php(13): CWebApplication->run()
+REQUEST_URI=/yiitest/
+in C:\wamp\www\yiitest\protected\controllers\SiteController.php (74)
+in C:\wamp\www\yiitest\index.php (13)
+2014/06/21 04:41:43 [error] [php] Undefined variable: clientdata (C:\wamp\www\yiitest\protected\controllers\SiteController.php:87)
+Stack trace:
+#0 C:\wamp\www\yiitest\framework\web\CController.php(286): SiteController->runAction()
+#1 C:\wamp\www\yiitest\framework\web\CController.php(265): SiteController->runActionWithFilters()
+#2 C:\wamp\www\yiitest\framework\web\CWebApplication.php(282): SiteController->run()
+#3 C:\wamp\www\yiitest\framework\web\CWebApplication.php(141): CWebApplication->runController()
+#4 C:\wamp\www\yiitest\framework\base\CApplication.php(184): CWebApplication->processRequest()
+#5 C:\wamp\www\yiitest\index.php(13): CWebApplication->run()
+REQUEST_URI=/yiitest/
+in C:\wamp\www\yiitest\protected\controllers\SiteController.php (87)
+in C:\wamp\www\yiitest\index.php (13)
