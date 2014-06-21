@@ -67,17 +67,21 @@ class SiteController extends Controller
 
 				$totalprod = $totalprod + $sale->prod;
 				$totalpay = $totalpay + $sale->payout;
-				$clientId = $sale->clientSeqNo;
-
+				$clientdata = array();
 				$criteria->select='*';
 				$criteria->condition='clientSeqNo='.$sale->clientSeqNo.' and YEAR(date_sale)= '.$year;
 				$sales=Sale::model()->findAll($criteria);
 
 				foreach ($sales as $sale) {
-					
+					$clientdata[] = array(
+						'date' => $sale->date_sale, 
+						'prod' => $sale->prod, 
+						'pay' => $sale->payout
+						)
 				}
-
-				$clientname=Client::model()->find('seqNo=:seqNo', array(':seqNo'=>$sale->clientSeqNo));
+				$clientId = $sale->clientSeqNo;
+				//Single fetch for client name
+				$clientname=Client::model()->find('seqNo=:seqNo', array(':seqNo'=>$clientId));
 
 				if(isset($clients[$clientId])) {
     				$clients[$clientId]['prod'] += $sale->prod;
@@ -88,7 +92,7 @@ class SiteController extends Controller
     				$clients[$clientId]['payout'] = $sale->payout;
     				$clients[$clientId]['name'] = $clientname->name;
     				$clients[$clientId]['date'] = $sale->date_sale;
-    				$clients[$clientId]['id'] = $sale->clientSeqNo;
+    				$clients[$clientId]['clientdata'] = $clientdata;
 				}
 				
 			 }
