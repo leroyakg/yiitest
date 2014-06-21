@@ -4,16 +4,7 @@
 $this->pageTitle=Yii::app()->name;
 ?> */
 ?>
-<style type="text/css">
-	.bg-warning, .table-head h4{
-		cursor: pointer;
-		-webkit-user-select: none;
-	 	-moz-user-select: none;
-	 	-ms-user-select: none;
-	 	-o-user-select: none;
-	 	user-select: none;
-	}
-</style>
+
 <div class="container">
 	<!-- Top Header Tags -->
 	<div class="row">

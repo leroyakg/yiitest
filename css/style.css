@@ -1,7 +1,15 @@
 /*=================================================*/
 /*SIMPLE CSS MODIFICATION TO SEPARATE EACH TABLE*/
 /*=================================================*/
-
+.bg-warning, .table-head h4{
+		cursor: pointer;
+		-webkit-user-select: none;
+	 	-moz-user-select: none;
+	 	-ms-user-select: none;
+	 	-o-user-select: none;
+	 	user-select: none;
+	}
+	
 .detail-header {
 	margin-top: 20px;
 }
