@@ -76,21 +76,21 @@ $this->pageTitle=Yii::app()->name;
 				<div class="second-row">
 					<!-- SECOND ROW MONTH DETAIL ========================================
 					================================================================> -->
-					<div class="row">
+					<div class="row data-ytd table-head">
 						<div class="col-xs-2 col-xs-offset-2">
-							<h4 class='month'>Month</h4>
+							<h4 data-desc='0' class='month'>Month</h4>
 						</div>
 						<div class="col-xs-2">
-							<h4 class='production'>Production</h4>
+							<h4 data-desc='0' class='production'>Production</h4>
 						</div>
 						<div class="col-xs-2">
-							<h4 class='payout'>Payout</h4>
+							<h4 data-desc='0' class='payout'>Payout</h4>
 						</div>
 					</div>
 					<!-- ============================================================== -->
 					
 					<?php foreach ($user['datesresume'] as $month): ?>
-						<div class="data-second-ytd">
+						<div class="data-ytd">
 							<div class="row">
 								<div class="col-xs-2 col-xs-offset-2">
 									<p class='month'><?php echo $month['month'] ?></p>
@@ -106,15 +106,15 @@ $this->pageTitle=Yii::app()->name;
 							<!-- THIRD TABLE DETAIL MONTH DETAIL ========================================
 							================================================================> -->
 							<div class="third-row">
-								<div class="row">
+								<div class="row table-head">
 									<div class="col-xs-2 col-xs-offset-2">
-										<h4>Date</h4>
+										<h4 data-desc='0'>Date</h4>
 									</div>
 									<div class="col-xs-2">
-										<h4>Production</h4>
+										<h4 data-desc='0'>Production</h4>
 									</div>
 									<div class="col-xs-2">
-										<h4>Payout</h4>
+										<h4 data-desc='0'>Payout</h4>
 									</div>
 								</div>
 								<?php foreach ($month['allmonth'] as $detail): ?>
@@ -133,13 +133,13 @@ $this->pageTitle=Yii::app()->name;
 								<?php endforeach ?>
 								<div class="row total-third">
 									<div class="col-xs-2 col-xs-offset-2">
-										<h4>Total: </h4>
+										<h4 data-desc='0'>Total: </h4>
 									</div>
 									<div class="col-xs-2">
-										<h4><?php echo $month['prod'] ?></h4>
+										<h4 data-desc='0'><?php echo $month['prod'] ?></h4>
 									</div>
 									<div class="col-xs-2">
-										<h4><?php echo $month['payout'] ?></h4>
+										<h4 data-desc='0'><?php echo $month['payout'] ?></h4>
 									</div>
 								</div>
 							</div>
@@ -148,21 +148,21 @@ $this->pageTitle=Yii::app()->name;
 
 					<!-- SECOND ROW CLIENT DETAIL ========================================
 					================================================================> -->
-					<div class="row">
+					<div class="row data-client table-head">
 						<div class="col-xs-2 col-xs-offset-2">
-							<h4 class='client'>Client</h4>
+							<h4 data-desc='0' class='client'>Client</h4>
 						</div>
 						<div class="col-xs-2">
-							<h4 class='production'>Production</h4>
+							<h4 data-desc='0' class='production'>Production</h4>
 						</div>
 						<div class="col-xs-2">
-							<h4 class='payout'>Payout</h4>
+							<h4 data-desc='0' class='payout'>Payout</h4>
 						</div>
 					</div>
 
 					
 					<?php foreach ($user['clientsresume'] as $client): ?>
-						<div class="data-second-client">
+						<div class="data-client">
 							<div class="row">
 								<div class="col-xs-2 col-xs-offset-2">
 									<p class='client'><?php echo $client['name'] ?></p>
@@ -179,15 +179,15 @@ $this->pageTitle=Yii::app()->name;
 							<!-- THIRD TABLE DETAIL CLIENT DETAIL ========================================
 								================================================================> -->
 							<div class="third-row">
-								<div class="row">
+								<div class="row table-head">
 									<div class="col-xs-2 col-xs-offset-2">
-										<h4>Date</h4>
+										<h4 data-desc='0'>Date</h4>
 									</div>
 									<div class="col-xs-2">
-										<h4>Production</h4>
+										<h4 data-desc='0'>Production</h4>
 									</div>
 									<div class="col-xs-2">
-										<h4>Payout</h4>
+										<h4 data-desc='0'>Payout</h4>
 									</div>
 								</div>
 								<!-- EDIT THIS ===================================================================

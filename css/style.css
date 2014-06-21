@@ -1,14 +1,11 @@
 /*=================================================*/
 /*SIMPLE CSS MODIFICATION TO SEPARATE EACH TABLE*/
 /*=================================================*/
-.bg-warning, .table-head h4{
-		cursor: pointer;
-		-webkit-user-select: none;
-	 	-moz-user-select: none;
-	 	-ms-user-select: none;
-	 	-o-user-select: none;
-	 	user-select: none;
-	}
+.bg-warning,
+.table-head h4,
+p.name {
+	cursor: pointer;
+}
 
 .glyphicon {
 	font-size: 12px;

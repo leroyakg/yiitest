@@ -53,6 +53,7 @@
 
 			// sort
 			sortElements = $(this).parents(parentSel).children(sortSel);
+			console.log(sortElements.get())
 			var sorted = sortElements.sort(sortFunc);
 			// Reorder DOM elements
 			var sortTo = sortElements.parent();
@@ -70,3 +71,9 @@
 		});
 	}
 })(jQuery);
+
+// Make sortable tables.
+$(function() {
+    $('.table-head h4').superSort('.first-row', '.data');
+    $('.second-row h4').superSort('.second-row', '.data-ytd');
+});
