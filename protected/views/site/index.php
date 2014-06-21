@@ -190,9 +190,8 @@ $this->pageTitle=Yii::app()->name;
 										<h4>Payout</h4>
 									</div>
 								</div>
-								<!-- EDIT THIS ===================================================================
-								============================================================================== -->
-								<?php foreach ($month['allmonth'] as $detail): ?>
+
+								<?php foreach ($client['clientdata'] as $detail): ?>
 									<div class="row">
 										<div class="col-xs-2 col-xs-offset-2">
 											<p><?php echo $detail['month'] ?></p>
