@@ -47,16 +47,15 @@
 			$(this).data('desc', desc);
 
 			// Which function to use for sorting and desc or asc.
-			if(sortBy === 'name') sortFunc = (desc ? sortStringDesc : sortStringAsc);
+			if(sortBy === 'name' || 'client') sortFunc = (desc ? sortStringDesc : sortStringAsc);
 			else if(sortBy === 'date' || sortBy === 'month') sortFunc = (desc ? sortDateDesc : sortDateAsc);
 			else sortFunc = (desc ? sortIntDesc : sortIntAsc);
 
 			// sort
-			sortElements = $(this).parents(parentSel).children(sortSel);
-			console.log(sortElements.get())
+			sortElements = $(this).parents(parentSel).find(sortSel);
 			var sorted = sortElements.sort(sortFunc);
 			// Reorder DOM elements
-			var sortTo = sortElements.parent();
+			var sortTo = sorted.parent();
 			sorted.each(function(i, val) {
 				sortTo.append(val)
 			});
@@ -74,6 +73,7 @@
 
 // Make sortable tables.
 $(function() {
-    $('.table-head h4').superSort('.first-row', '.data');
-    $('.second-row h4').superSort('.second-row', '.data-ytd');
+    $('.table-head:first h4').superSort('.first-row', '.data');
+    $('.ytd-head h4').superSort('.second-row', '.data-ytd');
+    $('.client-head h4').superSort('.second-row', '.data-client');
 });
