@@ -60,42 +60,51 @@ class SiteController extends Controller
 			$sales=Sale::model()->findAll($criteria);
 			$nameclient = array();
 			$clients= array();
-			foreach ($sales as $sale) {
-				
-				$YTD = $YTD + $sale->prod;
-				$YTD2 = $YTD2 + $sale->payout;
-
-				$totalprod = $totalprod + $sale->prod;
-				$totalpay = $totalpay + $sale->payout;
-				$clientdata = array();
-				$criteria->select='*';
-				$criteria->condition='clientSeqNo='.$sale->clientSeqNo.' and YEAR(date_sale)= '.$year;
-				$sales=Sale::model()->findAll($criteria);
-
 				foreach ($sales as $sale) {
-					$clientdata[] = array(
-						'date' => $sale->date_sale, 
-						'prod' => $sale->prod, 
-						'pay' => $sale->payout
-						)
-				}
-				$clientId = $sale->clientSeqNo;
-				//Single fetch for client name
-				$clientname=Client::model()->find('seqNo=:seqNo', array(':seqNo'=>$clientId));
 
-				if(isset($clients[$clientId])) {
-    				$clients[$clientId]['prod'] += $sale->prod;
-    				$clients[$clientId]['payout'] += $sale->prod;
-				}
-				else {
-    				$clients[$clientId]['prod'] = $sale->prod;
-    				$clients[$clientId]['payout'] = $sale->payout;
-    				$clients[$clientId]['name'] = $clientname->name;
-    				$clients[$clientId]['date'] = $sale->date_sale;
-    				$clients[$clientId]['clientdata'] = $clientdata;
-				}
-				
-			 }
+					//YTD for each client
+					$YTD = $YTD + $sale->prod;
+					$YTD2 = $YTD2 + $sale->payout;
+
+					//Total values for all the table
+					$totalprod = $totalprod + $sale->prod;
+					$totalpay = $totalpay + $sale->payout;
+
+					//Array to hold all user data
+					$clientdata = array();
+
+					//Single fetch for client name
+					$clientId = $sale->clientSeqNo;
+					$clientname=Client::model()->find('seqNo=:id', array(':id'=>$clientId));
+
+					//--------------------------------------------------------------------->
+					if(isset($clients[$clientId])) {
+	    				$clients[$clientId]['prod'] += $sale->prod;
+	    				$clients[$clientId]['payout'] += $sale->payout;
+					}
+					else {
+	    				$clients[$clientId]['prod'] = $sale->prod;
+	    				$clients[$clientId]['payout'] = $sale->payout;
+	    				$clients[$clientId]['name'] = $clientname->name;
+	    				$clients[$clientId]['date'] = $sale->date_sale;
+	    				$clients[$clientId]['clientdata'] = $clientdata;
+					}
+					//<----------------------------------------------------------------------
+
+					//Query 
+					$criteria->select='*';
+					$criteria->condition='clientSeqNo='.$sale->clientSeqNo.' and YEAR(date_sale)= '.$year;
+					$sales=Sale::model()->findAll($criteria);
+					//Recover all data for each client, for the third table.
+					foreach ($sales as $sale) {
+						$clientdata[] = array(
+							'month' => $sale->date_sale, 
+							'prod' => $sale->prod, 
+							'payout' => $sale->payout
+							);
+					}
+					
+				 }
 
 			//GROUP BY MONTH FOR EACH USER
 			$datesresume = array();
@@ -105,7 +114,7 @@ class SiteController extends Controller
 			$criteria->condition='userSeqNo='.$seqno.' group by MONTH(date_sale)';
 			$sales=Sale::model()->findAll($criteria);
 
-			foreach ($sales as $sale) {
+				foreach ($sales as $sale) {
 				//TOTAL DATE'S IN A MONTH		
 				$allmonth = array();
 				$criteria=new CDbCriteria;
@@ -120,7 +129,7 @@ class SiteController extends Controller
 				$allmonthprod = $allmonthprod + $sale->prod;
 				$allmonthpay = $allmonthpay + $sale->payout;
 				$datesresume[] = array('month' => Yii::app()->dateFormatter->format("MM/yy", $sale->date_sale), 'prod' => $sale->prod, 'payout' => $sale->payout, 'allmonth' => $allmonth);
-			 }
+			 	}
 			// FOR MTD CALCULATION
 			$MTD = 0;
 			$MTD2 = 0;
@@ -131,17 +140,20 @@ class SiteController extends Controller
 			$criteria->condition='userSeqNo='.$seqno.' and MONTH(date_sale)= '.$month;
 			$sales=Sale::model()->findAll($criteria);
 
-			foreach ($sales as $sale) {
-				//var_dump($sale->prod);
-				$MTD = $MTD + $sale->prod;
-				$MTD2 = $MTD2 + $sale->payout;
+				foreach ($sales as $sale) {
+					//Total MTD for each user and total
+					$MTD = $MTD + $sale->prod;
+					$MTD2 = $MTD2 + $sale->payout;
+					$totalmprod = $totalmprod + $sale->prod;
+					$totalmpay = $totalmpay + $sale->payout;
 
-				$totalmprod = $totalmprod + $sale->prod;
-				$totalmpay = $totalmpay + $sale->payout;
+					$monthresume[] = array('month' => Yii::app()->dateFormatter->format("MM/yy", $sale->date_sale), 
+						'prod' => $sale->prod, 
+						'pay' => $sale->payout
+						);
 
-				$monthresume[] = array('month' => Yii::app()->dateFormatter->format("MM/yy", $sale->date_sale), 'prod' => $sale->prod, 'pay' => $sale->payout);
-
-			 }
+				 }
+				 
 			//FOR YESTERDAY CALCULATION
 			$YYTD = 0;
 			$YYTD2 = 0;
@@ -151,14 +163,14 @@ class SiteController extends Controller
 			$criteria->condition='userSeqNo='.$seqno.' and DAY(date_sale)= '.$yesterday;
 			$sales=Sale::model()->findAll($criteria);
 
-			foreach ($sales as $sale) {
-				
-				$YYTD = $YYTD + $sale->prod;
-				$YYTD2 = $YYTD2 + $sale->payout;
+				foreach ($sales as $sale) {
+					
+					$YYTD = $YYTD + $sale->prod;
+					$YYTD2 = $YYTD2 + $sale->payout;
 
-				$totalyprod = $totalyprod + $sale->prod;
-				$totalypay = $totalypay + $sale->payout;
-			 }
+					$totalyprod = $totalyprod + $sale->prod;
+					$totalypay = $totalypay + $sale->payout;
+				 }
 
 	     	
 			// AN MASTER ARRAY THAT HOLDS ALL DATA WE NEED IN VIEW
@@ -186,7 +198,7 @@ class SiteController extends Controller
 
 
 
-
+	     	
 		$this->render('index', array('data' => $data));
 
 	}
