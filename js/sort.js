@@ -54,6 +54,7 @@
 			// sort
 			sortElements = $(this).parents(parentSel).find(sortSel);
 			var sorted = sortElements.sort(sortFunc);
+			console.log(sorted.get())
 			// Reorder DOM elements
 			var sortTo = sorted.parent();
 			sorted.each(function(i, val) {
@@ -76,4 +77,5 @@ $(function() {
     $('.table-head:first h4').superSort('.first-row', '.data');
     $('.ytd-head h4').superSort('.second-row', '.data-ytd');
     $('.client-head h4').superSort('.second-row', '.data-client');
+    $('.third-row .table-head h4').superSort('.third-row', '.client-third')
 });
