@@ -44,11 +44,11 @@
 
 <div class="clear"></div>
 
-<!-- <div id="footer" class="text-center well">
+<div id="footer" class="text-center">
 	Copyright &copy; <?php echo date('Y'); ?> by leroykilgore.<br/>
 	All Rights Reserved.<br/>
 	<?php echo Yii::powered(); ?>
-</div> footer -->
+</div>
 
 
 <script src="<?php echo Yii::app()->request->baseUrl; ?>/js/bootstrap.min.js" type="text/javascript" charset="utf-8" async defer></script>

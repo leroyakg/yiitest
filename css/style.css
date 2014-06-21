@@ -1,6 +1,6 @@
-.sort-items {
-	margin-top: 20px;
-}
+/*=================================================*/
+/*SIMPLE CSS MODIFICATION TO SEPARATE EACH TABLE*/
+/*=================================================*/
 
 .detail-header {
 	margin-top: 20px;
@@ -14,3 +14,10 @@
 .detail2-total h5 {
 	font-weight: bold;
 }
+
+#footer {
+	margin-top: 80px;
+}
+
+/*=================================================*/
+/*=================================================*/

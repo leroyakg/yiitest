@@ -10,10 +10,6 @@ class SiteController extends Controller
 	public function actions()
 	{
 		return array(
-			// captcha action renders the CAPTCHA image displayed on the contact page
-			
-			// page action renders "static" pages stored under 'protected/views/site/pages'
-			// They can be accessed via: index.php?r=site/page&view=FileName
 			'page'=>array(
 				'class'=>'CViewAction',
 			),
@@ -26,9 +22,6 @@ class SiteController extends Controller
 	 */
 	public function actionIndex()
 	{
-		// renders the view file 'protected/views/site/index.php'
-		// using the default layout 'protected/views/layouts/main.php'
-
 		$data = array();
 
 		//TODAY'S DATE
@@ -41,17 +34,9 @@ class SiteController extends Controller
 	     $month =  date("m");
 
 	     //YESTERDAY
-	     $yesterday = date("Y-m-d",strtotime("-1 days"));	     
-	 
-	     //1 MONTH FROM TODAY
-	     $end = date("Y-m-d",strtotime("+1 months"));
-	 
-	     //SEND REMINDER 25 DAYS FROM TODAY
-	     $reminder = date("Y-m-d",strtotime("+25 days"));
-	 
-	     //REMOVE THE RECORD 1 YEAR FROM TODAY
-	     $remove = date("Y-m-d",strtotime("+1 years"));
+	     $yesterday = date("Y-m-d",strtotime("-1 days"));	
 
+	     //FIND ALL USER'S
 		$criteria=new CDbCriteria();
 	    $users=User::model()->findAll($criteria);
      	$totalprod = 0;
@@ -64,18 +49,18 @@ class SiteController extends Controller
 		$allmonthpay = 0;
 
 	     foreach ($users as $user) {
-
+	     	//FIND ALL PRODUCTION AND PAYOUT FROM A USER ID = ID
 			$YTD = 0;
 			$YTD2 = 0;
 			$details = array();
 			$seqno= $user->seqNo;
 	     	$criteria=new CDbCriteria;
-			$criteria->select='*';  // only select the 'title' column
+			$criteria->select='*';
 			$criteria->condition='userSeqNo='.$seqno.' and YEAR(date_sale)= '.$year;
-			$sales=Sale::model()->findAll($criteria); // $params is not needed
+			$sales=Sale::model()->findAll($criteria);
 
 			foreach ($sales as $sale) {
-				//var_dump($sale->prod);
+				
 				$YTD = $YTD + $sale->prod;
 				$YTD2 = $YTD2 + $sale->payout;
 
@@ -84,19 +69,19 @@ class SiteController extends Controller
 
 				$details[] = array('id' => $sale->seqNo, 'month' => $sale->date_sale, 'prod' => $sale->prod, 'pay' => $sale->payout);
 			 }
-
+			//GROUP BY MONTH FOR EACH USER
 			$datesresume = array();
 			$seqno= $user->seqNo;
 	     	$criteria=new CDbCriteria;
-			$criteria->select='*';  // only select the 'title' column
+			$criteria->select='*';
 			$criteria->condition='userSeqNo='.$seqno.' group by MONTH(date_sale)';
-			$sales=Sale::model()->findAll($criteria); // $params is not needed
+			$sales=Sale::model()->findAll($criteria);
 
 			foreach ($sales as $sale) {
-							
+				//TOTAL DATE'S IN A MONTH		
 				$allmonth = array();
 				$criteria=new CDbCriteria;
-				$criteria->select='*';  // only select the 'title' column
+				$criteria->select='*';
 				$criteria->condition='userSeqNo='.$seqno.' and MONTH(date_sale)= '.Yii::app()->dateFormatter->format("M", $sale->date_sale);
 				$sales=Sale::model()->findAll($criteria);
 
@@ -108,15 +93,15 @@ class SiteController extends Controller
 				$allmonthpay = $allmonthpay + $sale->payout;
 				$datesresume[] = array('month' => Yii::app()->dateFormatter->format("MM/yy", $sale->date_sale), 'prod' => $sale->prod, 'payout' => $sale->payout, 'allmonth' => $allmonth);
 			 }
-
+			// FOR MTD CALCULATION
 			$MTD = 0;
 			$MTD2 = 0;
 			$seqno= $user->seqNo;
 			$monthresume = array();
 	     	$criteria=new CDbCriteria;
-			$criteria->select='*';  // only select the 'title' column
+			$criteria->select='*';
 			$criteria->condition='userSeqNo='.$seqno.' and MONTH(date_sale)= '.$month;
-			$sales=Sale::model()->findAll($criteria); // $params is not needed
+			$sales=Sale::model()->findAll($criteria);
 
 			foreach ($sales as $sale) {
 				//var_dump($sale->prod);
@@ -129,17 +114,17 @@ class SiteController extends Controller
 				$monthresume[] = array('month' => Yii::app()->dateFormatter->format("MM/yy", $sale->date_sale), 'prod' => $sale->prod, 'pay' => $sale->payout);
 
 			 }
-
+			//FOR YESTERDAY CALCULATION
 			$YYTD = 0;
 			$YYTD2 = 0;
 			$seqno= $user->seqNo;
 	     	$criteria=new CDbCriteria;
-			$criteria->select='*';  // only select the 'title' column
+			$criteria->select='*';
 			$criteria->condition='userSeqNo='.$seqno.' and DAY(date_sale)= '.$yesterday;
-			$sales=Sale::model()->findAll($criteria); // $params is not needed
+			$sales=Sale::model()->findAll($criteria);
 
 			foreach ($sales as $sale) {
-				//var_dump($sale->prod);
+				
 				$YYTD = $YYTD + $sale->prod;
 				$YYTD2 = $YYTD2 + $sale->payout;
 
@@ -147,13 +132,10 @@ class SiteController extends Controller
 				$totalypay = $totalypay + $sale->payout;
 			 }
 
-
+			// AN MASTER ARRAY THAT HOLDS ALL DATA WE NEED IN VIEW
 			$data[]=array('name'=>$user->name, 'YTD' => $YTD, 'YTD2' => $YTD2, 'MTD' => $MTD, 'MTD2' => $MTD2, 'YYTD' => $YYTD, 'YYTD2' => $YYTD2, 'details' => $details, 'monthresume' => $monthresume, 'datesresume' => $datesresume, 'totalpay' => $totalpay, 'totalprod' => $totalprod, 'totalmpay' => $totalmpay,'totalmprod' => $totalmprod, 'totalypay' => $totalypay,'totalyprod' => $totalyprod,
 				'allmonthprod' => $allmonthprod, 'allmonthpay' => $allmonthpay);
 	     	}
-
-	    $criteria=new CDbCriteria();
-	    $client=Client::model()->findAll($criteria);
 
 
 		$this->render('index', array('data' => $data));
