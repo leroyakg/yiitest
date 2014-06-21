@@ -9,13 +9,13 @@
 	 	-o-user-select: none;
 	 	user-select: none;
 	}
-	
+
 .detail-header {
 	margin-top: 20px;
 }
 
 
-.total-second, .total-first{
+.total-second, .total-third{
 	margin-bottom: 25px;
 }
 
