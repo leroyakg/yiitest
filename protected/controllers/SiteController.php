@@ -77,17 +77,16 @@ class SiteController extends Controller
 					$clientId = $sale->clientSeqNo;
 					$clientname=Client::model()->find('seqNo=:id', array(':id'=>$clientId));
 
-
 					//Query 
 					$criteria->select='*';
 					$criteria->condition='clientSeqNo='.$sale->clientSeqNo.' and YEAR(date_sale)= '.$year;
-					$sales=Sale::model()->findAll($criteria);
+					$details=Sale::model()->findAll($criteria);
 					//Recover all data for each client, for the third table.
-					foreach ($sales as $sale) {
+					foreach ($details as $detail) {
 						$clientdata[] = array(
-							'month' => $sale->date_sale, 
-							'prod' => $sale->prod, 
-							'payout' => $sale->payout
+							'month' => $detail->date_sale, 
+							'prod' => $detail->prod, 
+							'payout' => $detail->payout
 							);
 					}
 					//--------------------------------------------------------------------->
