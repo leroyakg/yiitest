@@ -137,6 +137,17 @@ class SiteController extends Controller
 				'allmonthprod' => $allmonthprod, 'allmonthpay' => $allmonthpay);
 	     	}
 
+	     	$criteria=new CDbCriteria;
+			$criteria->select='*';
+			$criteria->condition='userSeqNo='.$seqno.' and DAY(date_sale)= '.$yesterday;
+			$clients=Client::model()->findAll($criteria);
+
+			foreach ($variable as $key => $value) {
+				# code...
+			}
+
+
+
 
 		$this->render('index', array('data' => $data));
 
