@@ -77,19 +77,6 @@ class SiteController extends Controller
 					$clientId = $sale->clientSeqNo;
 					$clientname=Client::model()->find('seqNo=:id', array(':id'=>$clientId));
 
-					//--------------------------------------------------------------------->
-					if(isset($clients[$clientId])) {
-	    				$clients[$clientId]['prod'] += $sale->prod;
-	    				$clients[$clientId]['payout'] += $sale->payout;
-					}
-					else {
-	    				$clients[$clientId]['prod'] = $sale->prod;
-	    				$clients[$clientId]['payout'] = $sale->payout;
-	    				$clients[$clientId]['name'] = $clientname->name;
-	    				$clients[$clientId]['date'] = $sale->date_sale;
-	    				$clients[$clientId]['clientdata'] = $clientdata;
-					}
-					//<----------------------------------------------------------------------
 
 					//Query 
 					$criteria->select='*';
@@ -103,6 +90,19 @@ class SiteController extends Controller
 							'payout' => $sale->payout
 							);
 					}
+					//--------------------------------------------------------------------->
+					if(isset($clients[$clientId])) {
+	    				$clients[$clientId]['prod'] += $sale->prod;
+	    				$clients[$clientId]['payout'] += $sale->payout;
+					}
+					else {
+	    				$clients[$clientId]['prod'] = $sale->prod;
+	    				$clients[$clientId]['payout'] = $sale->payout;
+	    				$clients[$clientId]['name'] = $clientname->name;
+	    				$clients[$clientId]['date'] = $sale->date_sale;
+	    				$clients[$clientId]['clientdata'] = $clientdata;
+					}
+					//<----------------------------------------------------------------------
 					
 				 }
 
@@ -195,7 +195,6 @@ class SiteController extends Controller
 				'nameclient' => $nameclient,
 				'clientsresume' => $clients);
 	     	}
-
 
 
 	     	

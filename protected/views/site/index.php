@@ -169,15 +169,17 @@ $this->pageTitle=Yii::app()->name;
 										<p class='client'><?php echo $client['name'] ?></p>
 									</div>
 									<div class="col-xs-2 client-prod">
-										<p class='production'><?php echo $client['prod'] ?></p>
+										<p class='production bg-warning'><?php echo $client['prod'] ?></p>
 									</div>
 									<div class="col-xs-2">
 										<p class='payout'><?php echo $client['payout'] ?></p>
 									</div>
 								</div>
 
-								<?php foreach ($client['clientdata'] as $detail): ?>
-									<div class="row">
+								<!-- THIRD TABLE DETAIL CLIENT DETAIL ========================================
+									================================================================> -->
+								<div class="third-row">
+									<div class="row table-head">
 										<div class="col-xs-2 col-xs-offset-2">
 											<h4 data-desc='0'>Date</h4>
 										</div>
@@ -202,17 +204,16 @@ $this->pageTitle=Yii::app()->name;
 												<p><?php echo $detail['payout'] ?></p>
 											</div>
 										</div>
-
 									<?php endforeach ?>
 									<div class="row total-third">
 										<div class="col-xs-2 col-xs-offset-2">
 											<h4>Total: </h4>
 										</div>
 										<div class="col-xs-2">
-											<h4><?php echo $month['prod'] ?></h4>
+											<h4><?php echo $detail['prod'] ?></h4>
 										</div>
 										<div class="col-xs-2">
-											<h4><?php echo $month['payout'] ?></h4>
+											<h4><?php echo $detail['payout'] ?></h4>
 										</div>
 									</div>
 								</div>
