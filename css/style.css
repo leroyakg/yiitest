@@ -10,6 +10,11 @@
 	 	user-select: none;
 	}
 
+.glyphicon {
+	font-size: 12px;
+	margin-left: 5px;
+}
+
 .detail-header {
 	margin-top: 20px;
 }

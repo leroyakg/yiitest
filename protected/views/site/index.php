@@ -191,13 +191,3 @@ $this->pageTitle=Yii::app()->name;
 		</div>
 	</div>
 </div> <!-- container -->
-
-<script type="text/javascript" src="http://code.jquery.com/jquery-1.11.0.min.js"></script>
-<script type="text/javascript" src='js/sort.js'></script>
-<script type="text/javascript" src='js/toggle.js'></script>
-<script type="text/javascript">
-	$(function() {
-		$('.table-head h4').superSort('.first-row', '.data');
-		$('.second-row h4').superSort('.second-row', '.data-second');
-	});
-</script>

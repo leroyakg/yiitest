@@ -51,6 +51,15 @@
 </div>
 
 
+<script type="text/javascript" src="http://code.jquery.com/jquery-1.11.0.min.js"></script>
 <script src="<?php echo Yii::app()->request->baseUrl; ?>/js/bootstrap.min.js" type="text/javascript" charset="utf-8" async defer></script>
+<script type="text/javascript" src='<?php echo Yii::app()->request->baseUrl; ?>/js/sort.js'></script>
+<script type="text/javascript" src='<?php echo Yii::app()->request->baseUrl; ?>/js/toggle.js'></script>
+<script type="text/javascript">
+  $(function() {
+    $('.table-head h4').superSort('.first-row', '.data');
+    $('.second-row h4').superSort('.second-row', '.data-second');
+  });
+</script>
 </body>
 </html>
