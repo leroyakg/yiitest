@@ -176,11 +176,8 @@ $this->pageTitle=Yii::app()->name;
 									</div>
 								</div>
 
-
-								<!-- THIRD TABLE DETAIL CLIENT DETAIL ========================================
-									================================================================> -->
-								<div class="third-row">
-									<div class="row table-head">
+								<?php foreach ($client['clientdata'] as $detail): ?>
+									<div class="row">
 										<div class="col-xs-2 col-xs-offset-2">
 											<h4 data-desc='0'>Date</h4>
 										</div>
