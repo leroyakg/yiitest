@@ -159,17 +159,19 @@ $this->pageTitle=Yii::app()->name;
 							<h4 class='payout'>Payout</h4>
 						</div>
 					</div>
+
+					
 					<?php foreach ($user['clientsresume'] as $client): ?>
 						<div class="data-second-client">
 							<div class="row">
 								<div class="col-xs-2 col-xs-offset-2">
-									<h4 class='client'><?php echo $client['name'] ?></h4>
+									<p class='client'><?php echo $client['name'] ?></p>
 								</div>
 								<div class="col-xs-2">
-									<h4 class='production'><?php echo $client['prod'] ?></h4>
+									<p class='production'><?php echo $client['prod'] ?></p>
 								</div>
 								<div class="col-xs-2">
-									<h4 class='payout'><?php echo $client['payout'] ?></h4>
+									<p class='payout'><?php echo $client['payout'] ?></p>
 								</div>
 							</div>
 
@@ -188,6 +190,8 @@ $this->pageTitle=Yii::app()->name;
 										<h4>Payout</h4>
 									</div>
 								</div>
+								<!-- EDIT THIS ===================================================================
+								============================================================================== -->
 								<?php foreach ($month['allmonth'] as $detail): ?>
 									<div class="row">
 										<div class="col-xs-2 col-xs-offset-2">

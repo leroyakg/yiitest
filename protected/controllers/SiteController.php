@@ -58,7 +58,8 @@ class SiteController extends Controller
 			$criteria->select='*';
 			$criteria->condition='userSeqNo='.$seqno.' and YEAR(date_sale)= '.$year;
 			$sales=Sale::model()->findAll($criteria);
-
+			$nameclient = array();
+			$clients= array();
 			foreach ($sales as $sale) {
 				
 				$YTD = $YTD + $sale->prod;
@@ -66,9 +67,32 @@ class SiteController extends Controller
 
 				$totalprod = $totalprod + $sale->prod;
 				$totalpay = $totalpay + $sale->payout;
+				$clientId = $sale->clientSeqNo;
+				
+				$criteria->select='*';
+				$criteria->condition='clientSeqNo='.$sale->clientSeqNo.' and YEAR(date_sale)= '.$year;
+				$sales=Sale::model()->findAll($criteria);
 
-				$details[] = array('id' => $sale->seqNo, 'month' => $sale->date_sale, 'prod' => $sale->prod, 'pay' => $sale->payout);
+				foreach ($sales as $sale) {
+					$clientresume = 
+				}
+
+				$clientname=Client::model()->find('seqNo=:seqNo', array(':seqNo'=>$sale->clientSeqNo));
+
+				if(isset($clients[$clientId])) {
+    				$clients[$clientId]['prod'] += $sale->prod;
+    				$clients[$clientId]['payout'] += $sale->prod;
+				}
+				else {
+    				$clients[$clientId]['prod'] = $sale->prod;
+    				$clients[$clientId]['payout'] = $sale->payout;
+    				$clients[$clientId]['name'] = $clientname->name;
+    				$clients[$clientId]['date'] = $sale->date_sale;
+    				$clients[$clientId]['id'] = $sale->clientSeqNo;
+				}
+				
 			 }
+
 			//GROUP BY MONTH FOR EACH USER
 			$datesresume = array();
 			$seqno= $user->seqNo;
@@ -132,19 +156,29 @@ class SiteController extends Controller
 				$totalypay = $totalypay + $sale->payout;
 			 }
 
+	     	
 			// AN MASTER ARRAY THAT HOLDS ALL DATA WE NEED IN VIEW
-			$data[]=array('name'=>$user->name, 'YTD' => $YTD, 'YTD2' => $YTD2, 'MTD' => $MTD, 'MTD2' => $MTD2, 'YYTD' => $YYTD, 'YYTD2' => $YYTD2, 'details' => $details, 'monthresume' => $monthresume, 'datesresume' => $datesresume, 'totalpay' => $totalpay, 'totalprod' => $totalprod, 'totalmpay' => $totalmpay,'totalmprod' => $totalmprod, 'totalypay' => $totalypay,'totalyprod' => $totalyprod,
-				'allmonthprod' => $allmonthprod, 'allmonthpay' => $allmonthpay);
+			$data[]=array(
+				'name'=>$user->name, 
+				'YTD' => $YTD, 
+				'YTD2' => $YTD2, 
+				'MTD' => $MTD, 
+				'MTD2' => $MTD2, 
+				'YYTD' => $YYTD, 
+				'YYTD2' => $YYTD2, 
+				'monthresume' => $monthresume, 
+				'datesresume' => $datesresume, 
+				'totalpay' => $totalpay, 
+				'totalprod' => $totalprod, 
+				'totalmpay' => $totalmpay,
+				'totalmprod' => $totalmprod, 
+				'totalypay' => $totalypay,
+				'totalyprod' => $totalyprod,
+				'allmonthprod' => $allmonthprod, 
+				'allmonthpay' => $allmonthpay, 
+				'nameclient' => $nameclient,
+				'clientsresume' => $clients);
 	     	}
-
-	     	$criteria=new CDbCriteria;
-			$criteria->select='*';
-			$criteria->condition='userSeqNo='.$seqno.' and DAY(date_sale)= '.$yesterday;
-			$clients=Client::model()->findAll($criteria);
-
-			foreach ($variable as $key => $value) {
-				# code...
-			}
 
 
 
