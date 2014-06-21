@@ -68,13 +68,13 @@ class SiteController extends Controller
 				$totalprod = $totalprod + $sale->prod;
 				$totalpay = $totalpay + $sale->payout;
 				$clientId = $sale->clientSeqNo;
-				
+
 				$criteria->select='*';
 				$criteria->condition='clientSeqNo='.$sale->clientSeqNo.' and YEAR(date_sale)= '.$year;
 				$sales=Sale::model()->findAll($criteria);
 
 				foreach ($sales as $sale) {
-					$clientresume = 
+					
 				}
 
 				$clientname=Client::model()->find('seqNo=:seqNo', array(':seqNo'=>$sale->clientSeqNo));
